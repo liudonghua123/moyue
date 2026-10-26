@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Scene from "../components/Scene.jsx";
 import { POEMS, getPoem } from "../data/poems.js";
+import { CATEGORIES } from "../data/categories.js";
 import { PAINTING_URLS } from "../data/paintings.js";
 import { useSpeech } from "../hooks/useSpeech.js";
 
@@ -62,8 +63,6 @@ export default function PoemPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  const idx = POEMS.indexOf(poem);
 
   return (
     <div className="poem-page">
@@ -179,21 +178,33 @@ export default function PoemPage() {
           <span className="switch-now">{poem.title}</span>
           <span className="switch-caret" aria-hidden="true">▾</span>
         </button>
-        {/* 诗签条：单行横滑，scroll-snap */}
+        {/* 诗签条：按分类分组的横滑列 */}
         <div className="poem-switch" id="poem-switch" aria-hidden={!switchOpen}>
-          <div className="poem-switch-rail">
-            {POEMS.map((p, i) => (
-              <Link
-                key={p.id}
-                to={`/poem/${p.id}`}
-                className={i === idx ? "current" : ""}
-                aria-current={i === idx ? "page" : undefined}
-                onClick={() => setSwitchOpen(false)}
-                ref={i === idx ? (el) => { currentRef.current = el; } : undefined}
-              >
-                {p.title}
-              </Link>
-            ))}
+          <div className="poem-switch-scroll">
+            {CATEGORIES.map((cat) => {
+              const poems = cat.ids
+                .map((pid) => POEMS.find((p) => p.id === pid))
+                .filter(Boolean);
+              return (
+                <div className="poem-switch-group" key={cat.key}>
+                  <p className="poem-switch-cat">{cat.label}</p>
+                  <div className="poem-switch-rail">
+                    {poems.map((p, i) => (
+                      <Link
+                        key={p.id}
+                        to={`/poem/${p.id}`}
+                        className={p.id === poem.id ? "current" : ""}
+                        aria-current={p.id === poem.id ? "page" : undefined}
+                        onClick={() => setSwitchOpen(false)}
+                        ref={p.id === poem.id ? (el) => { currentRef.current = el; } : undefined}
+                      >
+                        {p.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </nav>

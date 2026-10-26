@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Scene from "../components/Scene.jsx";
 import { POEMS } from "../data/poems.js";
+import { CATEGORIES } from "../data/categories.js";
 import imgLandscape from "../assets/landscape.jpg";
 import imgPavilion from "../assets/landscape-with-pavilion.jpg";
 import imgMountain from "../assets/mountain-landscape.jpg";
@@ -111,12 +112,17 @@ function Hero() {
   );
 }
 
-/** 诗卷：横向滚动长廊 */
+/** 诗卷：横向滚动长廊 + 分类筛选 */
 function Shelf() {
   const railRef = useRef(null);
   const [pos, setPos] = useState(0);
   const [canMore, setCanMore] = useState(true);
   const [canPrev, setCanPrev] = useState(false);
+  const [filter, setFilter] = useState(null); // null = 全部
+
+  const shown = filter
+    ? POEMS.filter((p) => CATEGORIES.find((c) => c.key === filter)?.ids.includes(p.id))
+    : POEMS;
 
   const onScroll = () => {
     const el = railRef.current;
@@ -145,6 +151,27 @@ function Shelf() {
           <button onClick={() => nudge(1)} disabled={!canMore} aria-label="向后卷动">→</button>
         </div>
       </div>
+      {/* 分类筛选 chips */}
+      <div className="wrap shelf-filters" role="group" aria-label="按分类筛选">
+        <button
+          className={`filter-chip ${filter === null ? "on" : ""}`}
+          onClick={() => setFilter(null)}
+          aria-pressed={filter === null}
+        >
+          全部
+        </button>
+        {CATEGORIES.map((c) => (
+          <button
+            key={c.key}
+            className={`filter-chip ${filter === c.key ? "on" : ""}`}
+            onClick={() => setFilter(filter === c.key ? null : c.key)}
+            aria-pressed={filter === c.key}
+          >
+            {c.label}
+            <span className="chip-count">{c.ids.length}</span>
+          </button>
+        ))}
+      </div>
       <motion.div
         className="shelf-rail"
         ref={railRef}
@@ -153,8 +180,9 @@ function Shelf() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 1, ease: EASE }}
+        key={filter || "all"}
       >
-        {POEMS.map((p) => (
+        {shown.map((p) => (
           <Link className="scene-card" to={`/poem/${p.id}`} key={p.id} aria-label={`进入《${p.title}》`}>
             <div className="scene-card-art" aria-hidden="true">
               <Scene sceneKey={p.scene} />
@@ -198,15 +226,69 @@ function Tagline() {
   );
 }
 
+/** 分类下拉：仿岛式导航的分类按钮（▾），面板列出该类诗题 */
+function CategoryDrop({ cat, open, onToggle }) {
+  const ref = useRef(null);
+  const poems = cat.ids.map((id) => POEMS.find((p) => p.id === id)).filter(Boolean);
+  return (
+    <div className={`nav-cat ${open ? "open" : ""}`} ref={ref}>
+      <button
+        className="nav-cat-btn"
+        onClick={onToggle}
+        aria-expanded={open}
+        aria-controls={`cat-panel-${cat.key}`}
+      >
+        {cat.label}
+        <span className="nav-caret" aria-hidden="true">▾</span>
+      </button>
+      <div className="nav-cat-panel" id={`cat-panel-${cat.key}`} role="menu">
+        <p className="nav-cat-desc">{cat.desc}</p>
+        {poems.map((p) => (
+          <Link className="nav-cat-item" to={`/poem/${p.id}`} key={p.id} role="menuitem" onClick={onToggle}>
+            <span className="nav-cat-time" aria-hidden="true">{p.sceneTime}</span>
+            {p.title}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
+  const [openCat, setOpenCat] = useState(null);
+  const navRef = useRef(null);
+
+  // 点击外部 / Esc 关闭下拉
+  useEffect(() => {
+    if (!openCat) return;
+    const onDown = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setOpenCat(null);
+    };
+    const onKey = (e) => e.key === "Escape" && setOpenCat(null);
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [openCat]);
+
   return (
     <>
       <a className="skip-link" href="#main">跳到主要内容</a>
 
-      {/* 岛式浮动导航 */}
-      <nav className="site-nav island" aria-label="站点导航">
+      {/* 岛式浮动导航：品牌 + 分类下拉 */}
+      <nav className="site-nav island" aria-label="站点导航" ref={navRef}>
         <Link className="brand" to="/">墨<em>月</em></Link>
         <div className="nav-links">
+          {CATEGORIES.map((cat) => (
+            <CategoryDrop
+              key={cat.key}
+              cat={cat}
+              open={openCat === cat.key}
+              onToggle={() => setOpenCat(openCat === cat.key ? null : cat.key)}
+            />
+          ))}
           <a href="#shelf">诗卷</a>
           <a href="#philosophy">缘起</a>
         </div>
