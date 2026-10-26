@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="as-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a93b5"/>
+      <stop offset="0.55" stop-color="#c9a58e"/>
+      <stop offset="1" stop-color="#e8b98a"/>
+    </linearGradient>
+    <linearGradient id="as-m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7d7296"/><stop offset="1" stop-color="#635878"/>
+    </linearGradient>
+    <linearGradient id="as-m2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5d5272"/><stop offset="1" stop-color="#493f5c"/>
+    </linearGradient>
+    <linearGradient id="as-hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4c3a52"/><stop offset="1" stop-color="#382b40"/>
+    </linearGradient>
+    <filter id="as-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：白云生处有人家 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#as-sky)"/>
+
+    <!-- 晚照斜阳 -->
+    <circle class="bg-sun" cx="1250" cy="240" r="46" fill="#f6cf90"/>
+    <circle cx="1250" cy="240" r="100" fill="#f6cf90" opacity="0.28" filter="url(#as-soft)"/>
+
+    <!-- 远山两重 -->
+    <path d="M0,380 L280,290 L540,380 L800,300 L1080,390 L1340,320 L1600,400 L1600,620 L0,620 Z" fill="url(#as-m1)" filter="url(#as-soft)" opacity="0.9"/>
+    <path d="M0,470 L320,390 L640,480 L960,400 L1280,490 L1600,420 L1600,680 L0,680 Z" fill="url(#as-m2)"/>
+
+    <!-- 白云生处：山腰云带与人家 -->
+    <g class="bg-clouds" filter="url(#as-soft)">
+      <ellipse class="bg-cloud bg-cloud-a" cx="600" cy="470" rx="300" ry="30" fill="#e8e0e6" opacity="0.5"/>
+      <ellipse class="bg-cloud bg-cloud-b" cx="1050" cy="520" rx="260" ry="26" fill="#ddd4dc" opacity="0.42"/>
+    </g>
+    <!-- 人家：白云深处 -->
+    <g class="bg-houses">
+      <path d="M860,470 L920,470 L920,510 L860,510 Z" fill="#3a2e44"/>
+      <path d="M848,470 L932,470 L890,442 Z" fill="#2d2336"/>
+      <path d="M960,492 L1010,492 L1010,526 L960,526 Z" fill="#3a2e44"/>
+      <path d="M950,492 L1020,492 L985,468 Z" fill="#2d2336"/>
+    </g>
+
+    <!-- 暮霭飘移 -->
+    <ellipse class="bg-haze" cx="800" cy="600" rx="620" ry="50" fill="#c99a78" opacity="0.24" filter="url(#as-soft)"/>
+  </g>
+
+  <!-- ======== 人物层：停车坐爱枫林晚 ======== -->
+  <g class="fg">
+    <!-- 近景山坡 -->
+    <path d="M0,640 L400,560 L900,660 L1400,580 L1600,640 L1600,900 L0,900 Z" fill="url(#as-hill)"/>
+
+    <!-- 石径：自坡下蜿蜒入山 -->
+    <path class="fg-path" d="M420,900 Q560,760 640,700 Q740,640 840,600" fill="none" stroke="#2a2133" stroke-width="34" stroke-linecap="round"/>
+    <path class="fg-path" d="M420,900 Q560,760 640,700 Q740,640 840,600" fill="none" stroke="#413550" stroke-width="24" stroke-linecap="round"/>
+    <g fill="#2a2133" opacity="0.8">
+      <ellipse cx="560" cy="790" rx="10" ry="4"/>
+      <ellipse cx="640" cy="716" rx="10" ry="4"/>
+      <ellipse cx="730" cy="648" rx="9" ry="4"/>
+    </g>
+
+    <!-- 枫林：坡上数株，红胜二月花 -->
+    <g class="fg-maples">
+      <g class="fg-maple fg-maple-a">
+        <path d="M1000,640 L1010,470" stroke="#241a2b" stroke-width="12" fill="none"/>
+        <path d="M1006,560 L966,510 M1008,520 L1046,480" stroke="#241a2b" stroke-width="6" fill="none"/>
+        <g fill="#a34438">
+          <circle class="fg-leaf" cx="962" cy="504" r="30"/>
+          <circle class="fg-leaf" cx="1016" cy="462" r="34"/>
+          <circle class="fg-leaf" cx="1056" cy="502" r="26"/>
+          <circle class="fg-leaf" cx="994" cy="428" r="28"/>
+        </g>
+      </g>
+      <g class="fg-maple fg-maple-b">
+        <path d="M1240,620 L1248,490" stroke="#241a2b" stroke-width="9" fill="none"/>
+        <g fill="#8c3a32">
+          <circle class="fg-leaf" cx="1228" cy="484" r="24"/>
+          <circle class="fg-leaf" cx="1262" cy="458" r="27"/>
+          <circle class="fg-leaf" cx="1280" cy="498" r="20"/>
+        </g>
+      </g>
+      <g class="fg-maple fg-maple-c">
+        <path d="M700,690 L706,590" stroke="#241a2b" stroke-width="8" fill="none"/>
+        <g fill="#b34a3c">
+          <circle class="fg-leaf" cx="688" cy="584" r="20"/>
+          <circle class="fg-leaf" cx="716" cy="564" r="23"/>
+          <circle class="fg-leaf" cx="728" cy="598" r="17"/>
+        </g>
+      </g>
+    </g>
+    <!-- 霜叶缓落 -->
+    <path class="fg-falling" d="M0,0 q6,4 12,0 q-6,6 -12,0" fill="#b34a3c"/>
+
+    <!-- 停车而望的旅人 -->
+    <g class="fg-poet">
+      <!-- 车辕一角示意停车 -->
+      <path d="M300,760 L380,742 L378,758 L302,778 Z" fill="#1e1728"/>
+      <circle cx="330" cy="776" r="16" fill="#171221"/>
+      <circle cx="330" cy="776" r="7" fill="#2c2436"/>
+      <!-- 伫立的人 -->
+      <path class="fg-robe" d="M452,726 Q456,682 474,676 L490,676 Q510,682 512,726 L516,776 L448,776 Z" fill="#2c2237"/>
+      <path d="M474,676 L490,676 L488,776 L476,776 Z" fill="#3a2e48"/>
+      <circle class="fg-head" cx="482" cy="660" r="14" fill="#181221"/>
+      <circle class="fg-bun" cx="482" cy="644" r="6" fill="#181221"/>
+      <!-- 扶辔远望的手 -->
+      <path class="fg-arm" d="M508,696 L530,680 L538,666" stroke="#2c2237" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path class="fg-sleeve" d="M508,698 Q524,682 538,678 Q548,676 546,688 Q538,700 518,710 Z" fill="#3a2e48"/>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画 ---- */
+    .bg-sun { animation: as-sun 45s ease-in-out infinite; transform-origin: 1250px 240px; }
+    @keyframes as-sun { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+
+    .bg-cloud { animation: as-drift ease-in-out infinite; }
+    .bg-cloud-a { animation-duration: 55s; }
+    .bg-cloud-b { animation-duration: 70s; animation-delay: -25s; }
+    @keyframes as-drift { 0%,100% { transform: translateX(-40px); } 50% { transform: translateX(50px); } }
+
+    .bg-houses { animation: as-houses 55s ease-in-out infinite; transform-origin: 930px 490px; }
+    @keyframes as-houses { 0%,100% { transform: translateX(-14px); } 50% { transform: translateX(18px); } }
+
+    .bg-haze { animation: as-haze 30s ease-in-out infinite; }
+    @keyframes as-haze { 0%,100% { transform: translateX(-34px); } 50% { transform: translateX(34px); } }
+
+    /* ---- 人物动画 ---- */
+    .fg-maple { animation: as-sway 9s ease-in-out infinite; }
+    .fg-maple-a { transform-origin: 1006px 640px; }
+    .fg-maple-b { animation-duration: 11s; animation-delay: -3s; transform-origin: 1244px 620px; }
+    .fg-maple-c { animation-duration: 8s; animation-delay: -5s; transform-origin: 703px 690px; }
+    @keyframes as-sway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1.1deg); } }
+
+    .fg-leaf { animation: as-leafshiver 7s ease-in-out infinite; }
+    .fg-leaf:nth-child(2n) { animation-delay: 1.5s; animation-duration: 8.5s; }
+    .fg-leaf:nth-child(3n) { animation-delay: 3s; }
+    @keyframes as-leafshiver { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+    .fg-falling { animation: as-fall 12s linear infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes as-fall {
+      0% { transform: translate(1100px, 500px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translate(1180px, 740px) rotate(320deg); opacity: 0; }
+    }
+
+    .fg-poet { animation: as-breathe 7s ease-in-out infinite; transform-origin: 482px 776px; }
+    @keyframes as-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+    .fg-head { animation: as-gaze 13s ease-in-out infinite; transform-origin: 482px 674px; }
+    @keyframes as-gaze { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(-7deg); } }
+    .fg-bun { animation: as-bun 13s ease-in-out infinite; transform-origin: 482px 674px; }
+    @keyframes as-bun { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(-7deg); } }
+    .fg-arm { animation: as-arm 11s ease-in-out infinite; transform-origin: 508px 696px; }
+    @keyframes as-arm { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
+    .fg-sleeve { animation: as-sleeve 8s ease-in-out infinite; transform-origin: 508px 698px; }
+    @keyframes as-sleeve { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(4deg); } }
+  </style>
+</svg>

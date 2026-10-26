@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="db-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b57a86"/>
+      <stop offset="0.5" stop-color="#e39a78"/>
+      <stop offset="1" stop-color="#f4c088"/>
+    </linearGradient>
+    <linearGradient id="db-lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d68a6e"/>
+      <stop offset="0.5" stop-color="#a66a62"/>
+      <stop offset="1" stop-color="#6e4a50"/>
+    </linearGradient>
+    <filter id="db-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：溪亭日暮 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#db-sky)"/>
+
+    <!-- 落日熔金 -->
+    <circle class="bg-sun" cx="760" cy="330" r="58" fill="#f8d9a0"/>
+    <circle cx="760" cy="330" r="130" fill="#f8d9a0" opacity="0.35" filter="url(#db-soft)"/>
+
+    <!-- 晚霞云带 -->
+    <g filter="url(#db-soft)">
+      <ellipse class="bg-cloud bg-cloud-a" cx="380" cy="220" rx="260" ry="26" fill="#c97a80" opacity="0.5"/>
+      <ellipse class="bg-cloud bg-cloud-b" cx="1200" cy="180" rx="280" ry="28" fill="#d98e7e" opacity="0.45"/>
+    </g>
+
+    <!-- 远岸树影 -->
+    <path d="M0,420 Q200,390 400,420 T800,420 T1200,420 T1600,420 L1600,560 L0,560 Z" fill="#8a5a66" filter="url(#db-soft)" opacity="0.8"/>
+
+    <!-- 湖面：落日铺金 -->
+    <rect y="540" width="1600" height="360" fill="url(#db-lake)"/>
+    <ellipse class="bg-sunre" cx="760" cy="640" rx="90" ry="16" fill="#f8d9a0" opacity="0.5"/>
+    <g stroke="#e8a982" stroke-width="2" fill="none" opacity="0.5">
+      <path class="bg-wave" d="M180,720 Q300,712 420,720 T660,720"/>
+      <path class="bg-wave" d="M980,780 Q1120,772 1260,780 T1500,780"/>
+    </g>
+  </g>
+
+  <!-- ======== 人物层：误入藕花深处 ======== -->
+  <g class="fg">
+    <!-- 近处荷丛：两侧合围 -->
+    <g class="fg-lotusbed">
+      <g class="fg-leafgroup fg-leafgroup-a">
+        <ellipse cx="140" cy="700" rx="110" ry="34" fill="#4d6e52"/>
+        <ellipse cx="300" cy="760" rx="130" ry="38" fill="#43614b"/>
+        <path d="M180,700 Q176,620 190,560" stroke="#3c5443" stroke-width="7" fill="none"/>
+        <path d="M320,760 Q316,680 330,620" stroke="#3c5443" stroke-width="7" fill="none"/>
+        <g fill="#c96a76">
+          <path class="fg-bud" d="M188,560 Q180,530 190,512 Q200,530 188,560"/>
+          <path class="fg-bud" d="M332,620 Q324,588 334,570 Q344,588 332,620"/>
+        </g>
+      </g>
+      <g class="fg-leafgroup fg-leafgroup-b">
+        <ellipse cx="1320" cy="720" rx="120" ry="36" fill="#4a6a50"/>
+        <ellipse cx="1480" cy="660" rx="100" ry="30" fill="#527458"/>
+        <path d="M1350,720 Q1346,640 1360,580" stroke="#3c5443" stroke-width="7" fill="none"/>
+        <path d="M1490,660 Q1486,600 1498,548" stroke="#3c5443" stroke-width="6" fill="none"/>
+        <g fill="#c96a76">
+          <path class="fg-bud" d="M1360,580 Q1352,548 1362,530 Q1372,548 1360,580"/>
+          <path class="fg-bud" d="M1498,548 Q1490,518 1500,500 Q1510,518 1498,548"/>
+        </g>
+      </g>
+      <!-- 漂落的花瓣 -->
+      <path class="fg-petal" d="M0,0 q5,3 10,0 q-5,5 -10,0" fill="#d98a92"/>
+    </g>
+
+    <!-- 兰舟：误入深处 -->
+    <g class="fg-boat">
+      <path d="M620,700 Q800,654 980,700 L944,744 Q800,760 656,744 Z" fill="#33222e"/>
+      <path d="M636,698 Q800,662 964,698" fill="none" stroke="#4a3340" stroke-width="4"/>
+      <!-- 桨：正奋力划 -->
+      <path class="fg-oar" d="M700,676 L668,758" stroke="#3c2c36" stroke-width="8" stroke-linecap="round"/>
+      <path d="M660,756 L676,768" stroke="#3c2c36" stroke-width="10" stroke-linecap="round"/>
+      <!-- 划开水痕 -->
+      <path class="fg-wake" d="M640,716 Q590,728 550,748" stroke="#f2c096" stroke-width="4" fill="none" opacity="0.7"/>
+      <path class="fg-wake" d="M960,716 Q1010,728 1050,748" stroke="#f2c096" stroke-width="4" fill="none" opacity="0.7"/>
+
+      <!-- 少女泛舟 -->
+      <g class="fg-girl">
+        <path class="fg-grobe" d="M796,628 Q798,594 812,588 L824,588 Q840,594 842,628 L844,668 L794,668 Z" fill="#7a4a56"/>
+        <path d="M812,588 L824,588 L822,668 L814,668 Z" fill="#8c5862"/>
+        <!-- 双丫髻 -->
+        <circle class="fg-ghead" cx="818" cy="572" r="13" fill="#33222e"/>
+        <circle class="fg-bunL" cx="806" cy="556" r="7" fill="#33222e"/>
+        <circle class="fg-bunR" cx="830" cy="556" r="7" fill="#33222e"/>
+        <!-- 执桨的手 -->
+        <path class="fg-arm" d="M800,606 L772,632 L716,668" stroke="#7a4a56" stroke-width="8" stroke-linecap="round" fill="none"/>
+      </g>
+    </g>
+
+    <!-- 惊起的鸥鹭：自滩涂飞起 -->
+    <g class="fg-birds" stroke="#f4e6d0" stroke-width="3.4" fill="none" stroke-linecap="round">
+      <path class="fg-bird" d="M540,300 q14,-13 28,0 q14,-13 28,0"/>
+      <path class="fg-bird" d="M700,240 q11,-10 22,0 q11,-10 22,0"/>
+      <path class="fg-bird" d="M900,280 q12,-11 24,0 q12,-11 24,0"/>
+      <path class="fg-bird" d="M1080,220 q9,-8 18,0 q9,-8 18,0"/>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画：日暮 ---- */
+    .bg-sun { animation: db-sink 55s ease-in-out infinite; transform-origin: 760px 330px; }
+    @keyframes db-sink { 0%,100% { transform: translateY(0); } 60% { transform: translateY(40px); } }
+
+    .bg-cloud { animation: db-drift ease-in-out infinite; }
+    .bg-cloud-a { animation-duration: 60s; }
+    .bg-cloud-b { animation-duration: 76s; animation-delay: -28s; }
+    @keyframes db-drift { 0%,100% { transform: translateX(-36px); } 50% { transform: translateX(40px); } }
+
+    .bg-wave { stroke-dasharray: 220; stroke-dashoffset: 220; animation: db-wave 8s linear infinite; }
+    .bg-wave:nth-child(2) { animation-duration: 10s; animation-delay: -4s; }
+    @keyframes db-wave { to { stroke-dashoffset: -220; } }
+
+    .bg-sunre { animation: db-sunre 6s ease-in-out infinite; transform-origin: 760px 640px; }
+    @keyframes db-sunre { 0%,100% { transform: scaleX(1); opacity: 0.5; } 50% { transform: scaleX(1.2); opacity: 0.35; } }
+
+    /* ---- 人物动画：争渡 ---- */
+    .fg-leafgroup { animation: db-sway 9s ease-in-out infinite; }
+    .fg-leafgroup-a { transform-origin: 220px 760px; }
+    .fg-leafgroup-b { animation-duration: 11s; animation-delay: -4s; transform-origin: 1400px 720px; }
+    @keyframes db-sway { 0%,100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+
+    .fg-bud { animation: db-bud 7s ease-in-out infinite; }
+    .fg-bud:nth-child(2) { animation-delay: 1.6s; }
+    @keyframes db-bud { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+
+    .fg-petal { animation: db-petal 10s linear infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes db-petal {
+      0% { transform: translate(520px, 560px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translate(470px, 760px) rotate(300deg); opacity: 0; }
+    }
+
+    .fg-boat { animation: db-rock 3.4s ease-in-out infinite; transform-origin: 800px 716px; }
+    @keyframes db-rock { 0%,100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(2deg) translateY(-6px); } }
+
+    /* 奋力划桨：左右往复 */
+    .fg-oar { animation: db-row 1.9s ease-in-out infinite; transform-origin: 700px 676px; }
+    @keyframes db-row { 0%,100% { transform: rotate(9deg); } 50% { transform: rotate(-11deg); } }
+    .fg-wake { animation: db-wake 3.4s ease-in-out infinite; }
+    @keyframes db-wake { 0%,100% { opacity: 0.45; } 50% { opacity: 0.85; } }
+
+    .fg-girl { animation: db-lean 3.4s ease-in-out infinite; transform-origin: 818px 668px; }
+    @keyframes db-lean { 0%,100% { transform: rotate(-1.6deg); } 50% { transform: rotate(1.6deg); } }
+    .fg-bunL { animation: db-bunL 3.4s ease-in-out infinite; transform-origin: 818px 572px; }
+    @keyframes db-bunL { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .fg-bunR { animation: db-bunR 3.4s ease-in-out infinite; transform-origin: 818px 572px; }
+    @keyframes db-bunR { 0%,100% { transform: translateY(3px); } 50% { transform: translateY(0); } }
+    .fg-arm { animation: db-arm 1.9s ease-in-out infinite; transform-origin: 800px 606px; }
+    @keyframes db-arm { 0%,100% { transform: rotate(7deg); } 50% { transform: rotate(-9deg); } }
+
+    /* 惊起的鸥鹭急飞远去 */
+    .fg-bird { animation: db-fly 5s linear infinite; }
+    .fg-bird:nth-child(2) { animation-delay: -1.2s; animation-duration: 5.6s; }
+    .fg-bird:nth-child(3) { animation-delay: -2.4s; }
+    .fg-bird:nth-child(4) { animation-delay: -3.4s; animation-duration: 5.4s; }
+    @keyframes db-fly {
+      from { transform: translate(0, 0); }
+      50% { transform: translate(120px, -46px); }
+      to { transform: translate(260px, -20px); }
+    }
+  </style>
+</svg>

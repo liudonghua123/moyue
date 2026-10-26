@@ -117,8 +117,8 @@ function Shelf() {
     <section className="shelf" id="shelf" aria-label="诗卷目录">
       <div className="wrap">
         <motion.div className="section-head" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={riseIn}>
-          <h2>诗卷</h2>
-          <p>四首诗，四段时辰。点开一境，人在画中。</p>
+              <h2>诗卷</h2>
+              <p>十四首诗，十四段时辰。点开一境，人在画中。</p>
         </motion.div>
         <div className="shelf-grid">
           {POEMS.map((p, i) => (
@@ -132,7 +132,7 @@ function Shelf() {
               <Link className="scene-card" to={`/poem/${p.id}`} aria-label={`进入《${p.title}》`}>
                 <div className="scene-card-art" aria-hidden="true">
                   <Scene sceneKey={p.scene} />
-                  <span className="scene-card-time">{["夜", "雪", "晨", "暮"][i]}</span>
+                  <span className="scene-card-time">{p.sceneTime}</span>
                 </div>
                 <div className="scene-card-body">
                   <h3>{p.title}</h3>
@@ -231,7 +231,7 @@ export default function Home() {
         <div className="footer-cols">
           <div>
             <h3>墨月</h3>
-            <p>一诗一境的唐诗宋词读本。<br />目前收录四首唐诗，持续增补。</p>
+            <p>一诗一境的唐诗宋词读本。<br />目前收录十四首诗词，持续增补。</p>
           </div>
           <div>
             <h3>诗卷</h3>

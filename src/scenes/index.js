@@ -2,6 +2,16 @@ import moonlitRaw from "./moonlit.svg?raw";
 import snowRiverRaw from "./snow-river.svg?raw";
 import springDawnRaw from "./spring-dawn.svg?raw";
 import sunsetTowerRaw from "./sunset-tower.svg?raw";
+import waterfallRaw from "./waterfall.svg?raw";
+import gorgeMorningRaw from "./gorge-morning.svg?raw";
+import frostFerryRaw from "./frost-ferry.svg?raw";
+import autumnSlopeRaw from "./autumn-slope.svg?raw";
+import rainPathRaw from "./rain-path.svg?raw";
+import springRainRaw from "./spring-rain.svg?raw";
+import lotusLakeRaw from "./lotus-lake.svg?raw";
+import midAutumnRaw from "./mid-autumn.svg?raw";
+import duskBoatRaw from "./dusk-boat.svg?raw";
+import winterPlumRaw from "./winter-plum.svg?raw";
 
 /**
  * 场景注册表：诗的 `scene` 字段 → 原始 SVG 字符串。
@@ -13,6 +23,16 @@ export const SCENES = {
   "snow-river": snowRiverRaw,
   "spring-dawn": springDawnRaw,
   "sunset-tower": sunsetTowerRaw,
+  waterfall: waterfallRaw,
+  "gorge-morning": gorgeMorningRaw,
+  "frost-ferry": frostFerryRaw,
+  "autumn-slope": autumnSlopeRaw,
+  "rain-path": rainPathRaw,
+  "spring-rain": springRainRaw,
+  "lotus-lake": lotusLakeRaw,
+  "mid-autumn": midAutumnRaw,
+  "dusk-boat": duskBoatRaw,
+  "winter-plum": winterPlumRaw,
 };
 
 /** 场景 key → 惟一 id 前缀（避免多实例 SVG defs id 冲突） */

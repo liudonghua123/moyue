@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="ff-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0e1c"/>
+      <stop offset="0.6" stop-color="#151d31"/>
+      <stop offset="1" stop-color="#233047"/>
+    </linearGradient>
+    <linearGradient id="ff-river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c3a52"/>
+      <stop offset="1" stop-color="#1a2334"/>
+    </linearGradient>
+    <filter id="ff-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <radialGradient id="ff-fireglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f0b56a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f0b56a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ======== 背景层：月落乌啼霜满天 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#ff-sky)"/>
+
+    <!-- 残月西坠 -->
+    <g class="bg-moonset">
+      <circle cx="300" cy="170" r="42" fill="#e9e2cc"/>
+      <circle cx="316" cy="158" r="40" fill="#101627"/>
+    </g>
+
+    <!-- 霜色弥漫 -->
+    <g filter="url(#ff-soft)">
+      <ellipse class="bg-frost bg-frost-a" cx="500" cy="330" rx="420" ry="36" fill="#8fa3c4" opacity="0.14"/>
+      <ellipse class="bg-frost bg-frost-b" cx="1100" cy="260" rx="480" ry="42" fill="#8fa3c4" opacity="0.12"/>
+    </g>
+
+    <!-- 寒星 -->
+    <g fill="#cfd8e8">
+      <circle class="bg-star" cx="700" cy="90" r="1.6"/>
+      <circle class="bg-star" cx="900" cy="140" r="1.3"/>
+      <circle class="bg-star" cx="1150" cy="80" r="1.7"/>
+      <circle class="bg-star" cx="1350" cy="180" r="1.3"/>
+      <circle class="bg-star" cx="560" cy="200" r="1.2"/>
+    </g>
+
+    <!-- 远处寒山寺：山门与塔影 -->
+    <g class="bg-temple">
+      <path d="M1180,480 L1600,480 L1600,600 L1180,600 Z" fill="#1c2436"/>
+      <path d="M1160,482 L1620,482 L1620,494 L1160,494 Z" fill="#141b2b"/>
+      <!-- 塔 -->
+      <path d="M1380,360 L1420,360 L1416,480 L1384,480 Z" fill="#232d44"/>
+      <path d="M1368,362 L1432,362 L1432,372 L1368,372 Z" fill="#161e30"/>
+      <path d="M1374,398 L1426,398 L1426,407 L1374,407 Z" fill="#161e30"/>
+      <path d="M1378,434 L1422,434 L1422,442 L1378,442 Z" fill="#161e30"/>
+      <path d="M1372,348 L1428,348 L1400,330 Z" fill="#161e30"/>
+      <!-- 山门 -->
+      <path d="M1240,440 L1310,440 L1310,482 L1240,482 Z" fill="#232d44"/>
+      <path d="M1230,442 L1320,442 L1320,452 L1230,452 Z" fill="#161e30"/>
+    </g>
+
+    <!-- 江面 -->
+    <rect y="600" width="1600" height="300" fill="url(#ff-river)"/>
+    <g stroke="#46587a" stroke-width="2" fill="none" opacity="0.5">
+      <path class="bg-wave" d="M160,680 Q280,672 400,680 T640,680"/>
+      <path class="bg-wave" d="M900,760 Q1040,752 1180,760 T1420,760"/>
+      <path class="bg-wave" d="M400,840 Q560,830 720,840"/>
+    </g>
+    <!-- 钟声涟漪：自寺前水面荡开 -->
+    <circle class="bg-bell" cx="1400" cy="640" r="30" fill="none" stroke="#7d8db0" stroke-width="2"/>
+    <circle class="bg-bell" cx="1400" cy="640" r="30" fill="none" stroke="#7d8db0" stroke-width="2"/>
+  </g>
+
+  <!-- ======== 人物层：江枫渔火对愁眠 ======== -->
+  <g class="fg">
+    <!-- 近岸枫树两株 -->
+    <g class="fg-maple">
+      <path d="M150,620 L162,430" stroke="#1c1420" stroke-width="12" fill="none"/>
+      <path d="M156,520 L120,470 M158,480 L196,440" stroke="#1c1420" stroke-width="6" fill="none"/>
+      <g fill="#5a2a33">
+        <circle class="fg-leaf" cx="118" cy="462" r="26"/>
+        <circle class="fg-leaf" cx="170" cy="430" r="30"/>
+        <circle class="fg-leaf" cx="205" cy="462" r="22"/>
+        <circle class="fg-leaf" cx="150" cy="404" r="24"/>
+      </g>
+    </g>
+    <g class="fg-maple fg-maple-b">
+      <path d="M330,630 L340,480" stroke="#1c1420" stroke-width="9" fill="none"/>
+      <g fill="#4c242d">
+        <circle class="fg-leaf" cx="316" cy="474" r="20"/>
+        <circle class="fg-leaf" cx="352" cy="452" r="24"/>
+        <circle class="fg-leaf" cx="368" cy="490" r="17"/>
+      </g>
+    </g>
+    <!-- 枫叶缓落 -->
+    <path class="fg-falling" d="M0,0 q6,4 12,0 q-6,6 -12,0" fill="#6d3640" transform="translate(240,470)"/>
+
+    <!-- 客船与渔火 -->
+    <g class="fg-boat">
+      <!-- 船身 -->
+      <path d="M640,700 Q800,660 960,700 L928,742 Q800,756 672,742 Z" fill="#1a222f"/>
+      <path d="M656,698 Q800,668 944,698" fill="none" stroke="#2b3748" stroke-width="4"/>
+      <!-- 船篷 -->
+      <path d="M840,668 Q890,628 940,668 Z" fill="#222c3b"/>
+      <path d="M852,664 Q890,638 928,664" fill="none" stroke="#32405a" stroke-width="3"/>
+      <!-- 渔火：一点未眠的暖 -->
+      <g class="fg-fire">
+        <circle cx="720" cy="668" r="42" fill="url(#ff-fireglow)"/>
+        <path d="M712,676 Q720,648 728,676 Q724,684 720,682 Q716,684 712,676 Z" fill="#f0b56a"/>
+        <rect x="714" y="676" width="12" height="10" fill="#2a2230"/>
+      </g>
+
+      <!-- 愁眠的旅人：篷前抱膝而坐 -->
+      <g class="fg-traveller">
+        <path class="fg-robe" d="M776,676 Q778,650 790,646 L800,646 Q814,650 816,676 L818,700 L774,700 Z" fill="#141b28"/>
+        <circle class="fg-head" cx="792" cy="634" r="11" fill="#0d131e"/>
+        <!-- 抱膝的手臂 -->
+        <path class="fg-arm" d="M780,660 Q792,668 804,660" stroke="#141b28" stroke-width="8" stroke-linecap="round" fill="none"/>
+      </g>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画 ---- */
+    .bg-moonset { animation: ff-moonset 70s ease-in-out infinite; transform-origin: 300px 170px; }
+    @keyframes ff-moonset { 0%,100% { transform: translate(0,0); } 60%,100% { transform: translate(-60px, 46px); } }
+
+    .bg-star { animation: ff-twinkle 5s ease-in-out infinite; }
+    .bg-star:nth-child(2n) { animation-delay: 1.6s; animation-duration: 6s; }
+    .bg-star:nth-child(3n) { animation-delay: 3s; }
+    @keyframes ff-twinkle { 0%,100% { opacity: 0.25; } 50% { opacity: 0.9; } }
+
+    .bg-frost { animation: ff-frost 24s ease-in-out infinite; }
+    .bg-frost-b { animation-duration: 32s; animation-delay: -12s; }
+    @keyframes ff-frost { 0%,100% { transform: translateX(-24px); } 50% { transform: translateX(24px); } }
+
+    .bg-wave { stroke-dasharray: 220; stroke-dashoffset: 220; animation: ff-flow 9s linear infinite; }
+    .bg-wave:nth-child(2) { animation-duration: 11s; animation-delay: -4s; }
+    .bg-wave:nth-child(3) { animation-duration: 10s; animation-delay: -7s; }
+    @keyframes ff-flow { to { stroke-dashoffset: -220; } }
+
+    /* 钟声一圈圈荡开 */
+    .bg-bell { animation: ff-bell 7s ease-out infinite; transform-origin: 1400px 640px; }
+    .bg-bell:nth-child(2) { animation-delay: 3.5s; }
+    @keyframes ff-bell {
+      0% { transform: scale(0.4); opacity: 0; }
+      12% { opacity: 0.7; }
+      100% { transform: scale(3.4); opacity: 0; }
+    }
+
+    /* ---- 人物动画 ---- */
+    .fg-maple { animation: ff-sway 10s ease-in-out infinite; transform-origin: 156px 620px; }
+    @keyframes ff-sway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1.2deg); } }
+    .fg-maple-b { animation-duration: 12s; transform-origin: 336px 630px; }
+
+    .fg-leaf { animation: ff-leafshiver 7s ease-in-out infinite; }
+    .fg-leaf:nth-child(2n) { animation-delay: 1.4s; animation-duration: 8.5s; }
+    .fg-leaf:nth-child(3n) { animation-delay: 2.8s; }
+    @keyframes ff-leafshiver { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+    .fg-falling { animation: ff-fall 13s linear infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes ff-fall {
+      0% { transform: translate(240px, 470px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translate(300px, 700px) rotate(300deg); opacity: 0; }
+    }
+
+    .fg-boat { animation: ff-bob 8s ease-in-out infinite; transform-origin: 800px 716px; }
+    @keyframes ff-bob { 0%,100% { transform: rotate(-0.8deg) translateY(0); } 50% { transform: rotate(0.8deg) translateY(-5px); } }
+
+    .fg-fire { animation: ff-flicker 2.6s ease-in-out infinite; transform-origin: 720px 678px; }
+    @keyframes ff-flicker { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.78; transform: scale(1.06); } }
+
+    .fg-traveller { animation: ff-sigh 7s ease-in-out infinite; transform-origin: 796px 700px; }
+    @keyframes ff-sigh { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.97); } }
+    .fg-head { animation: ff-bowhead 12s ease-in-out infinite; transform-origin: 792px 645px; }
+    @keyframes ff-bowhead { 0%,100% { transform: rotate(4deg); } 50% { transform: rotate(8deg); } }
+  </style>
+</svg>

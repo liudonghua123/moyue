@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="gm-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c6a8e"/>
+      <stop offset="0.5" stop-color="#c98d7a"/>
+      <stop offset="1" stop-color="#eab77f"/>
+    </linearGradient>
+    <linearGradient id="gm-cliff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4d3d52"/><stop offset="1" stop-color="#332839"/>
+    </linearGradient>
+    <linearGradient id="gm-river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b07a5e"/>
+      <stop offset="1" stop-color="#6e4a44"/>
+    </linearGradient>
+    <filter id="gm-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：朝辞白帝彩云间 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#gm-sky)"/>
+
+    <!-- 晨日 -->
+    <circle class="bg-sun" cx="1180" cy="220" r="52" fill="#f7cf8e"/>
+    <circle cx="1180" cy="220" r="110" fill="#f7cf8e" opacity="0.25" filter="url(#gm-soft)"/>
+
+    <!-- 彩云两三层 -->
+    <g filter="url(#gm-soft)">
+      <ellipse class="bg-cloud bg-cloud-a" cx="320" cy="200" rx="230" ry="30" fill="#e8a988" opacity="0.5"/>
+      <ellipse class="bg-cloud bg-cloud-b" cx="900" cy="150" rx="200" ry="26" fill="#f0bd90" opacity="0.45"/>
+      <ellipse class="bg-cloud bg-cloud-c" cx="1320" cy="300" rx="180" ry="24" fill="#d99a80" opacity="0.4"/>
+    </g>
+
+    <!-- 高城：立在远处峡口山顶 -->
+    <g class="bg-citywall">
+      <path d="M700,360 L1060,360 L1060,330 Q880,300 700,330 Z" fill="#3a2d42"/>
+      <rect x="740" y="270" width="70" height="66" fill="#423349"/>
+      <rect x="860" y="255" width="90" height="80" fill="#46364e"/>
+      <rect x="990" y="275" width="60" height="60" fill="#423349"/>
+      <path d="M728,270 L822,270 L822,282 L728,282 Z" fill="#2c2234"/>
+      <path d="M846,250 L964,250 L964,263 L846,263 Z" fill="#2c2234"/>
+      <path d="M978,270 L1052,270 L1052,281 L978,281 Z" fill="#2c2234"/>
+    </g>
+
+    <!-- 两岸高山夹峙 -->
+    <path d="M0,300 L180,220 L380,340 L560,260 L760,400 L760,640 L0,640 Z" fill="url(#gm-cliff)"/>
+    <path d="M1600,260 L1420,190 L1220,320 L1040,240 L840,400 L840,640 L1600,640 Z" fill="url(#gm-cliff)"/>
+    <!-- 峭壁纹理 -->
+    <g stroke="#281f31" stroke-width="4" opacity="0.6">
+      <path d="M120,320 L200,560" fill="none"/>
+      <path d="M300,300 L360,560" fill="none"/>
+      <path d="M1480,280 L1420,560" fill="none"/>
+      <path d="M1300,320 L1350,560" fill="none"/>
+    </g>
+
+    <!-- 江面 -->
+    <rect y="620" width="1600" height="280" fill="url(#gm-river)"/>
+    <g stroke="#e8b473" stroke-width="2.4" fill="none" opacity="0.55">
+      <path class="bg-wave" d="M100,700 Q220,692 340,700 T580,700"/>
+      <path class="bg-wave" d="M1100,760 Q1240,752 1380,760"/>
+      <path class="bg-wave" d="M300,820 Q460,810 620,820 T940,820"/>
+    </g>
+  </g>
+
+  <!-- ======== 人物层：轻舟已过万重山 ======== -->
+  <g class="fg">
+    <!-- 近岸礁石 -->
+    <path d="M0,700 L120,660 L280,720 L280,900 L0,900 Z" fill="#241c2b"/>
+
+    <!-- 轻舟顺流 -->
+    <g class="fg-boat">
+      <!-- 舟体 -->
+      <path d="M640,706 Q800,664 960,706 L928,746 Q800,760 672,746 Z" fill="#241c28"/>
+      <path d="M656,704 Q800,672 944,704" fill="none" stroke="#382c3a" stroke-width="4"/>
+      <!-- 船头提起的水痕 -->
+      <path class="fg-wake" d="M640,714 Q600,722 570,740" stroke="#e8bfa0" stroke-width="4" fill="none" opacity="0.6"/>
+      <path class="fg-wake" d="M960,714 Q1000,722 1030,740" stroke="#e8bfa0" stroke-width="4" fill="none" opacity="0.6"/>
+
+      <!-- 船头诗人：迎风而立 -->
+      <g class="fg-poet">
+        <!-- 袍身前倾 -->
+        <path class="fg-robe" d="M742,612 Q748,572 766,566 L782,566 Q802,574 804,614 L806,668 L740,668 Z" fill="#2e2337"/>
+        <path d="M766,566 L782,566 L780,668 L768,668 Z" fill="#3c2f47"/>
+        <!-- 头：昂首向前 -->
+        <circle class="fg-poet-head" cx="782" cy="548" r="14" fill="#191322"/>
+        <circle class="fg-bun" cx="782" cy="532" r="6" fill="#191322"/>
+        <line x1="782" y1="532" x2="798" y2="538" stroke="#191322" stroke-width="3"/>
+        <!-- 负手的臂 -->
+        <path d="M746,590 L736,612" stroke="#2e2337" stroke-width="9" stroke-linecap="round"/>
+        <path class="fg-arm" d="M800,592 L812,612" stroke="#2e2337" stroke-width="9" stroke-linecap="round"/>
+        <!-- 翻飞的衣袂与飘带 -->
+        <path class="fg-sleeve" d="M740,596 Q716,606 704,626 Q700,638 712,636 Q726,630 736,616 Z" fill="#3c2f47"/>
+        <path class="fg-ribbon" d="M800,574 Q830,578 850,596 Q858,604 848,606 Q828,600 806,588 Z" fill="#3c2f47"/>
+      </g>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画：彩云流动，晨光初升 ---- */
+    .bg-cloud { animation: gm-drift linear infinite; }
+    .bg-cloud-a { animation-duration: 80s; }
+    .bg-cloud-b { animation-duration: 105s; animation-delay: -30s; }
+    .bg-cloud-c { animation-duration: 92s; animation-delay: -60s; }
+    @keyframes gm-drift { from { transform: translateX(-260px); } to { transform: translateX(1860px); } }
+
+    .bg-sun { animation: gm-sun 50s ease-in-out infinite; transform-origin: 1180px 220px; }
+    @keyframes gm-sun { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-22px); } }
+
+    /* 两岸山影飞退：慢速循环横移 */
+    .bg-citywall { animation: gm-recede 60s linear infinite; transform-origin: 880px 340px; }
+    @keyframes gm-recede { 0%,100% { transform: translateX(0); } 50% { transform: translateX(46px); } }
+
+    .bg-wave { stroke-dasharray: 240; stroke-dashoffset: 240; animation: gm-flow 7s linear infinite; }
+    .bg-wave:nth-child(2) { animation-duration: 9s; animation-delay: -3s; }
+    .bg-wave:nth-child(3) { animation-duration: 8s; animation-delay: -5s; }
+    @keyframes gm-flow { to { stroke-dashoffset: -240; } }
+
+    /* ---- 人物动画：轻舟飞渡 ---- */
+    .fg-boat { animation: gm-bob 4.6s ease-in-out infinite; transform-origin: 800px 720px; }
+    @keyframes gm-bob { 0%,100% { transform: rotate(-1.4deg) translateY(0); } 50% { transform: rotate(1.2deg) translateY(-8px); } }
+
+    .fg-wake { animation: gm-wake 4.6s ease-in-out infinite; }
+    @keyframes gm-wake { 0%,100% { opacity: 0.35; } 50% { opacity: 0.75; } }
+
+    .fg-poet { animation: gm-lean 6s ease-in-out infinite; transform-origin: 780px 668px; }
+    @keyframes gm-lean { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+    .fg-poet-head { animation: gm-gaze 11s ease-in-out infinite; transform-origin: 782px 562px; }
+    @keyframes gm-gaze { 0%,100% { transform: rotate(3deg); } 50% { transform: rotate(6deg); } }
+    .fg-bun { animation: gm-bun 11s ease-in-out infinite; transform-origin: 782px 562px; }
+    @keyframes gm-bun { 0%,100% { transform: rotate(3deg); } 50% { transform: rotate(6deg); } }
+    .fg-arm { animation: gm-arm 9s ease-in-out infinite; transform-origin: 800px 592px; }
+    @keyframes gm-arm { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(6deg); } }
+    /* 衣袂飘带迎风狂舞 */
+    .fg-sleeve { animation: gm-flutter 3.4s ease-in-out infinite; transform-origin: 740px 596px; }
+    @keyframes gm-flutter { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(6deg); } }
+    .fg-ribbon { animation: gm-ribbon 2.8s ease-in-out infinite; transform-origin: 800px 576px; }
+    @keyframes gm-ribbon { 0%,100% { transform: rotate(6deg); } 50% { transform: rotate(-8deg); } }
+  </style>
+</svg>

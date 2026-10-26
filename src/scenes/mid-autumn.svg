@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="ma-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1024"/>
+      <stop offset="0.55" stop-color="#141d3a"/>
+      <stop offset="1" stop-color="#243356"/>
+    </linearGradient>
+    <radialGradient id="ma-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f4ecd2" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#ece0bb" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ece0bb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ma-m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d2742"/><stop offset="1" stop-color="#152036"/>
+    </linearGradient>
+    <filter id="ma-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：明月几时有 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#ma-sky)"/>
+
+    <!-- 满月：中天悬镜 -->
+    <g class="bg-moontrack">
+      <circle cx="820" cy="230" r="170" fill="url(#ma-halo)"/>
+      <circle cx="820" cy="230" r="66" fill="#f4ecd2"/>
+      <circle cx="800" cy="212" r="11" fill="#e0d4ae" opacity="0.6"/>
+      <circle cx="842" cy="246" r="8" fill="#e0d4ae" opacity="0.5"/>
+      <circle cx="810" cy="252" r="6" fill="#e0d4ae" opacity="0.45"/>
+    </g>
+
+    <!-- 疏星 -->
+    <g fill="#dfe5ee">
+      <circle class="bg-star" cx="260" cy="130" r="1.7"/>
+      <circle class="bg-star" cx="460" cy="90" r="1.3"/>
+      <circle class="bg-star" cx="1240" cy="120" r="1.6"/>
+      <circle class="bg-star" cx="1440" cy="220" r="1.3"/>
+      <circle class="bg-star" cx="180" cy="300" r="1.2"/>
+      <circle class="bg-star" cx="1330" cy="340" r="1.4"/>
+    </g>
+
+    <!-- 夜云两缕 -->
+    <g filter="url(#ma-soft)">
+      <ellipse class="bg-cloud bg-cloud-a" cx="520" cy="300" rx="240" ry="24" fill="#1c2946" opacity="0.6"/>
+      <ellipse class="bg-cloud bg-cloud-b" cx="1160" cy="360" rx="260" ry="26" fill="#192641" opacity="0.55"/>
+    </g>
+
+    <!-- 远山连绵，月光描边 -->
+    <path d="M0,480 L280,400 L560,480 L840,410 L1120,490 L1380,420 L1600,480 L1600,700 L0,700 Z" fill="url(#ma-m1)"/>
+    <path d="M0,480 L280,400 L560,480 L840,410 L1120,490 L1380,420 L1600,480" fill="none" stroke="#8b93b8" stroke-width="2.5" opacity="0.5"/>
+
+    <!-- 山下平湖，倒映月影 -->
+    <rect y="660" width="1600" height="240" fill="#101a30"/>
+    <ellipse class="bg-moonre" cx="820" cy="740" rx="70" ry="14" fill="#e8dfc0" opacity="0.35"/>
+    <g stroke="#33415e" stroke-width="2" fill="none" opacity="0.6">
+      <path class="bg-wave" d="M200,780 Q320,772 440,780 T680,780"/>
+      <path class="bg-wave" d="M1000,820 Q1140,812 1280,820"/>
+    </g>
+  </g>
+
+  <!-- ======== 人物层：高台把酒问青天 ======== -->
+  <g class="fg">
+    <!-- 高台 -->
+    <g class="fg-terrace">
+      <path d="M480,700 L1120,700 L1120,730 L480,730 Z" fill="#1a2233"/>
+      <path d="M520,730 L1080,730 L1060,860 L540,860 Z" fill="#141b2b"/>
+      <!-- 台上栏板 -->
+      <rect x="480" y="640" width="640" height="9" fill="#232d42"/>
+      <g stroke="#232d42" stroke-width="6">
+        <line x1="520" y1="640" x2="520" y2="700"/>
+        <line x1="600" y1="640" x2="600" y2="700"/>
+        <line x1="680" y1="640" x2="680" y2="700"/>
+        <line x1="760" y1="640" x2="760" y2="700"/>
+        <line x1="840" y1="640" x2="840" y2="700"/>
+        <line x1="920" y1="640" x2="920" y2="700"/>
+        <line x1="1000" y1="640" x2="1000" y2="700"/>
+        <line x1="1080" y1="640" x2="1080" y2="700"/>
+      </g>
+
+      <!-- 把酒问天的词人 -->
+      <g class="fg-poet">
+        <!-- 袍身 -->
+        <path class="fg-robe" d="M770,700 L770,600 Q772,572 790,566 L806,566 Q826,572 828,600 L830,700 Z" fill="#262f45"/>
+        <path d="M790,566 L806,566 L804,700 L792,700 Z" fill="#323d58"/>
+        <!-- 头：仰面向月 -->
+        <circle class="fg-poet-head" cx="806" cy="548" r="15" fill="#1a2233"/>
+        <circle class="fg-bun" cx="806" cy="532" r="6" fill="#1a2233"/>
+        <!-- 举杯的臂：向天 -->
+        <path class="fg-arm" d="M824,594 L856,576 L872,556" stroke="#262f45" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- 杯 -->
+        <path class="fg-cup" d="M868,544 Q880,540 886,548 Q880,560 868,556 Z" fill="#3a3226"/>
+        <!-- 负手 -->
+        <path d="M774,600 L764,624" stroke="#262f45" stroke-width="9" stroke-linecap="round"/>
+        <!-- 大袖迎月 -->
+        <path class="fg-sleeve" d="M824,598 Q842,580 858,576 Q868,574 866,586 Q858,600 836,610 Z" fill="#323d58"/>
+      </g>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画 ---- */
+    /* 月轮缓转：一夜东升西沉（视觉循环） */
+    .bg-moontrack { animation: ma-moon 100s ease-in-out infinite alternate; transform-origin: 820px 230px; }
+    @keyframes ma-moon { from { transform: translateX(46px); } to { transform: translateX(-80px); } }
+
+    .bg-star { animation: ma-twinkle 5.5s ease-in-out infinite; }
+    .bg-star:nth-child(2n) { animation-delay: 1.8s; animation-duration: 6.5s; }
+    .bg-star:nth-child(3n) { animation-delay: 3.2s; }
+    @keyframes ma-twinkle { 0%,100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+
+    .bg-cloud { animation: ma-drift ease-in-out infinite; }
+    .bg-cloud-a { animation-duration: 66s; }
+    .bg-cloud-b { animation-duration: 84s; animation-delay: -36s; }
+    @keyframes ma-drift { 0%,100% { transform: translateX(-40px); } 50% { transform: translateX(44px); } }
+
+    .bg-wave { stroke-dasharray: 220; stroke-dashoffset: 220; animation: ma-wave 9s linear infinite; }
+    .bg-wave:nth-child(2) { animation-duration: 11s; animation-delay: -4s; }
+    @keyframes ma-wave { to { stroke-dashoffset: -220; } }
+
+    /* 湖中月影随波轻碎 */
+    .bg-moonre { animation: ma-moonre 6s ease-in-out infinite; transform-origin: 820px 740px; }
+    @keyframes ma-moonre { 0%,100% { transform: scaleX(1); opacity: 0.35; } 50% { transform: scaleX(1.18); opacity: 0.25; } }
+
+    /* ---- 人物动画：把酒问天 ---- */
+    .fg-poet { animation: ma-breathe 7s ease-in-out infinite; transform-origin: 800px 700px; }
+    @keyframes ma-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+    /* 仰首望月，微醺轻晃 */
+    .fg-poet-head { animation: ma-gaze 14s ease-in-out infinite; transform-origin: 806px 563px; }
+    @keyframes ma-gaze { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(-11deg); } }
+    .fg-bun { animation: ma-gaze 14s ease-in-out infinite; transform-origin: 806px 563px; }
+    /* 举杯向天，缓缓起落 */
+    .fg-arm { animation: ma-toast 14s ease-in-out infinite; transform-origin: 824px 594px; }
+    @keyframes ma-toast { 0%,100% { transform: rotate(0deg); } 45% { transform: rotate(-9deg); } 70% { transform: rotate(-9deg); } }
+    .fg-cup { animation: ma-cup 14s ease-in-out infinite; transform-origin: 824px 594px; }
+    @keyframes ma-cup { 0%,100% { transform: rotate(0deg); } 45% { transform: rotate(-9deg); } 70% { transform: rotate(-9deg); } }
+    .fg-sleeve { animation: ma-sleeve 9s ease-in-out infinite; transform-origin: 824px 598px; }
+    @keyframes ma-sleeve { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
+  </style>
+</svg>

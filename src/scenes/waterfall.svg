@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="wp-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5b4a6b"/>
+      <stop offset="0.5" stop-color="#8a6a83"/>
+      <stop offset="1" stop-color="#b48a90"/>
+    </linearGradient>
+    <linearGradient id="wp-fall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4ecf8"/>
+      <stop offset="1" stop-color="#cdd2e6"/>
+    </linearGradient>
+    <linearGradient id="wp-cliff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a3d55"/><stop offset="1" stop-color="#352b40"/>
+    </linearGradient>
+    <linearGradient id="wp-m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6d5a76"/><stop offset="1" stop-color="#574962"/>
+    </linearGradient>
+    <filter id="wp-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：日照香炉生紫烟 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#wp-sky)"/>
+
+    <!-- 紫烟：峰顶缓缓升腾 -->
+    <g filter="url(#wp-soft)">
+      <ellipse class="bg-mist bg-mist-a" cx="760" cy="300" rx="180" ry="40" fill="#a78bb8" opacity="0.4"/>
+      <ellipse class="bg-mist bg-mist-b" cx="900" cy="250" rx="140" ry="32" fill="#b89ccb" opacity="0.35"/>
+      <ellipse class="bg-mist bg-mist-c" cx="650" cy="220" rx="120" ry="28" fill="#9c7fae" opacity="0.3"/>
+    </g>
+
+    <!-- 远山 -->
+    <path d="M0,420 L300,320 L560,410 L820,330 L1100,420 L1360,350 L1600,430 L1600,640 L0,640 Z" fill="url(#wp-m1)" filter="url(#wp-soft)" opacity="0.85"/>
+
+    <!-- 飞瀑：白练自崖口坠落 -->
+    <path class="bg-fall" d="M820,300 L880,300 L860,660 L836,660 Z" fill="url(#wp-fall)"/>
+    <g stroke="#ffffff" stroke-width="3" opacity="0.7" fill="none">
+      <path class="bg-stream" d="M838,310 L828,650"/>
+      <path class="bg-stream" d="M858,320 L852,655"/>
+      <path class="bg-stream" d="M872,310 L868,640"/>
+    </g>
+    <!-- 落潭水雾与涟漪 -->
+    <ellipse class="bg-splash" cx="848" cy="672" rx="90" ry="18" fill="#f2ecf6" opacity="0.55" filter="url(#wp-soft)"/>
+    <g stroke="#c9b9cf" stroke-width="2.4" fill="none" opacity="0.6">
+      <path class="bg-ripple" d="M700,700 Q800,692 900,700 T1100,700"/>
+      <path class="bg-ripple" d="M560,760 Q700,750 840,760 T1120,760"/>
+    </g>
+    <!-- 潭水 -->
+    <rect y="660" width="1600" height="240" fill="#4d4258"/>
+    <rect y="660" width="1600" height="60" fill="#5d5166" opacity="0.6"/>
+  </g>
+
+  <!-- ======== 人物层：崖下仰望的诗人 ======== -->
+  <g class="fg">
+    <!-- 近崖两重，左右合围出观瀑位 -->
+    <path d="M0,560 L260,500 L520,600 L520,900 L0,900 Z" fill="#2b2334"/>
+    <path d="M1600,540 L1340,480 L1080,590 L1080,900 L1600,900 Z" fill="#332a3e"/>
+
+    <!-- 观瀑人：立于左崖边缘，仰望 -->
+    <g class="fg-poet">
+      <!-- 袍身 -->
+      <path class="fg-robe" d="M356,640 Q360,598 378,592 L394,592 Q412,598 416,640 L420,688 L352,688 Z" fill="#1f1829"/>
+      <path d="M378,592 L394,592 L392,688 L380,688 Z" fill="#2b2238"/>
+      <!-- 仰起的头 -->
+      <circle class="fg-poet-head" cx="386" cy="576" r="14" fill="#140f1d"/>
+      <circle class="fg-bun" cx="386" cy="560" r="6" fill="#140f1d"/>
+      <!-- 背手远望的臂 -->
+      <path class="fg-arm" d="M412,610 L434,592 L444,578" stroke="#1f1829" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <!-- 广袖当风 -->
+      <path class="fg-sleeve" d="M412,612 Q428,596 442,592 Q452,590 450,602 Q442,614 422,624 Z" fill="#2b2238"/>
+    </g>
+    <!-- 崖顶栏石 -->
+    <rect x="330" y="686" width="130" height="9" fill="#1c1526"/>
+    <path d="M352,695 L370,780 L386,780 L370,695 Z" fill="#211a2c"/>
+    <path d="M420,695 L438,780 L454,780 L436,695 Z" fill="#211a2c"/>
+  </g>
+
+  <style>
+    /* ---- 背景动画：紫烟升腾，白练长落 ---- */
+    .bg-mist { animation: wp-rise 18s ease-in-out infinite; }
+    .bg-mist-a { animation-duration: 16s; }
+    .bg-mist-b { animation-duration: 21s; animation-delay: -7s; }
+    .bg-mist-c { animation-duration: 26s; animation-delay: -13s; }
+    @keyframes wp-rise {
+      0% { transform: translate(0, 30px); opacity: 0; }
+      35% { opacity: 1; }
+      100% { transform: translate(-50px, -90px); opacity: 0; }
+    }
+
+    /* 飞流直下：帘面微颤 + 流线疾坠 */
+    .bg-fall { animation: wp-fall 5s ease-in-out infinite; }
+    @keyframes wp-fall { 0%,100% { opacity: 0.95; } 50% { opacity: 1; } }
+    .bg-stream { stroke-dasharray: 90 60; animation: wp-stream 1.6s linear infinite; }
+    .bg-stream:nth-child(2) { animation-duration: 1.3s; }
+    .bg-stream:nth-child(3) { animation-duration: 1.9s; }
+    @keyframes wp-stream { to { stroke-dashoffset: -150; } }
+
+    .bg-splash { animation: wp-splash 3.2s ease-in-out infinite; }
+    @keyframes wp-splash { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.12); opacity: 0.7; } }
+
+    .bg-ripple { stroke-dasharray: 200; stroke-dashoffset: 200; animation: wp-ripple 8s linear infinite; }
+    .bg-ripple:nth-child(2) { animation-delay: -4s; animation-duration: 10s; }
+    @keyframes wp-ripple { to { stroke-dashoffset: -200; } }
+
+    /* ---- 人物动画：仰望之姿 ---- */
+    .fg-poet { animation: wp-breathe 6.5s ease-in-out infinite; transform-origin: 386px 688px; }
+    @keyframes wp-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+    /* 头久久仰起，微微游移 */
+    .fg-poet-head { animation: wp-gaze 13s ease-in-out infinite; transform-origin: 386px 590px; }
+    @keyframes wp-gaze { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(-10deg); } }
+    .fg-bun { animation: wp-bun 13s ease-in-out infinite; transform-origin: 386px 590px; }
+    @keyframes wp-bun { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(-10deg); } }
+    .fg-arm { animation: wp-arm 11s ease-in-out infinite; transform-origin: 412px 610px; }
+    @keyframes wp-arm { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
+    .fg-sleeve { animation: wp-sleeve 8s ease-in-out infinite; transform-origin: 412px 612px; }
+    @keyframes wp-sleeve { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
+  </style>
+</svg>

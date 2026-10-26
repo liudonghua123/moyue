@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="ll-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9db8c9"/>
+      <stop offset="0.55" stop-color="#e8cf9e"/>
+      <stop offset="1" stop-color="#f2ddb0"/>
+    </linearGradient>
+    <linearGradient id="ll-lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5f8a72"/>
+      <stop offset="1" stop-color="#3d5f4e"/>
+    </linearGradient>
+    <filter id="ll-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：接天莲叶无穷碧 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#ll-sky)"/>
+
+    <!-- 映日朝阳 -->
+    <circle class="bg-sun" cx="880" cy="230" r="56" fill="#f8d592"/>
+    <circle cx="880" cy="230" r="120" fill="#f8d592" opacity="0.3" filter="url(#ll-soft)"/>
+
+    <!-- 远山与保俶塔影 -->
+    <path d="M0,340 L240,280 L480,340 L720,290 L960,345 L1200,290 L1440,340 L1600,300 L1600,560 L0,560 Z" fill="#7d95a5" filter="url(#ll-soft)" opacity="0.8"/>
+    <g class="bg-pagoda">
+      <path d="M1310,250 L1334,250 L1330,330 L1314,330 Z" fill="#6a8294"/>
+      <path d="M1302,252 L1342,252 L1322,236 Z" fill="#5d7586"/>
+    </g>
+
+    <!-- 湖面 -->
+    <rect y="540" width="1600" height="360" fill="url(#ll-lake)"/>
+
+    <!-- 接天莲叶：三重远近平铺 -->
+    <g class="bg-pads">
+      <g fill="#4f7a62" opacity="0.75">
+        <ellipse class="bg-pad" cx="200" cy="580" rx="52" ry="16"/>
+        <ellipse class="bg-pad" cx="420" cy="570" rx="44" ry="13"/>
+        <ellipse class="bg-pad" cx="640" cy="582" rx="56" ry="17"/>
+        <ellipse class="bg-pad" cx="900" cy="572" rx="48" ry="14"/>
+        <ellipse class="bg-pad" cx="1150" cy="582" rx="54" ry="16"/>
+        <ellipse class="bg-pad" cx="1400" cy="572" rx="46" ry="13"/>
+      </g>
+      <g fill="#4a7360">
+        <ellipse class="bg-pad" cx="120" cy="660" rx="72" ry="22"/>
+        <ellipse class="bg-pad" cx="360" cy="646" rx="60" ry="18"/>
+        <ellipse class="bg-pad" cx="600" cy="664" rx="76" ry="23"/>
+        <ellipse class="bg-pad" cx="860" cy="650" rx="64" ry="19"/>
+        <ellipse class="bg-pad" cx="1120" cy="666" rx="74" ry="22"/>
+        <ellipse class="bg-pad" cx="1380" cy="650" rx="62" ry="18"/>
+        <ellipse class="bg-pad" cx="1560" cy="664" rx="56" ry="17"/>
+      </g>
+      <g fill="#436a58">
+        <ellipse class="bg-pad" cx="240" cy="780" rx="96" ry="28"/>
+        <ellipse class="bg-pad" cx="540" cy="762" rx="82" ry="24"/>
+        <ellipse class="bg-pad" cx="820" cy="786" rx="98" ry="28"/>
+        <ellipse class="bg-pad" cx="1120" cy="766" rx="86" ry="25"/>
+        <ellipse class="bg-pad" cx="1420" cy="784" rx="94" ry="27"/>
+      </g>
+    </g>
+
+    <!-- 映日荷花：远近数朵 -->
+    <g class="bg-lotus">
+      <g class="bg-bloom bg-bloom-a">
+        <path d="M500,640 Q488,600 500,578 Q512,600 500,640" fill="#d96a72"/>
+        <path d="M484,636 Q476,606 488,590 Q494,614 484,636" fill="#e07d84"/>
+        <path d="M516,636 Q524,606 512,590 Q506,614 516,636" fill="#e07d84"/>
+        <line x1="500" y1="640" x2="500" y2="672" stroke="#3f6653" stroke-width="5"/>
+      </g>
+      <g class="bg-bloom bg-bloom-b">
+        <path d="M980,668 Q968,626 980,604 Q992,626 980,668" fill="#d96a72"/>
+        <path d="M964,664 Q956,632 968,616 Q974,642 964,664" fill="#e07d84"/>
+        <path d="M996,664 Q1004,632 992,616 Q986,642 996,664" fill="#e07d84"/>
+        <line x1="980" y1="668" x2="980" y2="700" stroke="#3f6653" stroke-width="5"/>
+      </g>
+      <g class="bg-bloom bg-bloom-c">
+        <path d="M1240,610 Q1230,576 1240,558 Q1250,576 1240,610" fill="#d96a72"/>
+        <path d="M1226,606 Q1218,580 1228,566 Q1234,588 1226,606" fill="#e07d84"/>
+        <path d="M1254,606 Q1262,580 1252,566 Q1246,588 1254,606" fill="#e07d84"/>
+        <line x1="1240" y1="610" x2="1240" y2="636" stroke="#3f6653" stroke-width="4"/>
+      </g>
+    </g>
+
+    <!-- 湖光波纹 -->
+    <g stroke="#7fa78c" stroke-width="2" fill="none" opacity="0.5">
+      <path class="bg-wave" d="M140,720 Q260,712 380,720 T620,720"/>
+      <path class="bg-wave" d="M900,760 Q1040,752 1180,760 T1420,760"/>
+    </g>
+  </g>
+
+  <!-- ======== 人物层：净慈寺前，送别 ======== -->
+  <g class="fg">
+    <!-- 寺前石岸 -->
+    <path d="M0,760 L520,720 L900,780 L1600,730 L1600,900 L0,900 Z" fill="#37423e"/>
+    <path d="M0,780 L520,742 L900,800 L1600,752 L1600,900 L0,900 Z" fill="#2c3531"/>
+
+    <!-- 净慈寺一角：左岸 -->
+    <g class="fg-temple">
+      <path d="M60,600 L300,600 L300,742 L60,742 Z" fill="#2e3339"/>
+      <path d="M36,600 L324,600 L300,556 Q180,532 60,556 Z" fill="#3a4048"/>
+      <path d="M120,648 L180,648 L180,742 L120,742 Z" fill="#20242a"/>
+      <rect x="220" y="640" width="52" height="60" fill="#20242a"/>
+      <circle cx="180" cy="624" r="14" fill="#4d4436"/>
+    </g>
+
+    <!-- 送别的两人：拱手作别 -->
+    <g class="fg-farewell">
+      <!-- 主人（送行者） -->
+      <g class="fg-host">
+        <path class="fg-hrobe" d="M660,806 L660,720 Q662,696 678,690 L694,690 Q712,696 714,720 L716,806 Z" fill="#333d4a"/>
+        <circle class="fg-hhead" cx="688" cy="674" r="14" fill="#232c38"/>
+        <circle cx="688" cy="658" r="6" fill="#232c38"/>
+        <!-- 拱手 -->
+        <path class="fg-harm" d="M710,712 L728,700 L734,690" stroke="#333d4a" stroke-width="9" stroke-linecap="round" fill="none"/>
+      </g>
+      <!-- 行者（林子方） -->
+      <g class="fg-guest">
+        <path class="fg-grobe" d="M760,806 L760,724 Q762,700 778,694 L794,694 Q812,700 814,724 L816,806 Z" fill="#43474e"/>
+        <circle class="fg-ghead" cx="788" cy="678" r="14" fill="#2c3138"/>
+        <circle cx="788" cy="662" r="6" fill="#2c3138"/>
+        <!-- 背行囊 -->
+        <path d="M756,716 L744,748 L760,752 Z" fill="#383c42"/>
+        <!-- 回身拱手 -->
+        <path class="fg-garm" d="M766,716 L748,702 L742,692" stroke="#43474e" stroke-width="9" stroke-linecap="round" fill="none"/>
+      </g>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画 ---- */
+    .bg-sun { animation: ll-sun 50s ease-in-out infinite; transform-origin: 880px 230px; }
+    @keyframes ll-sun { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+    .bg-pad { animation: ll-pad ease-in-out infinite; }
+    .bg-pad:nth-child(2n) { animation-duration: 7s; animation-delay: -2s; }
+    .bg-pad:nth-child(3n) { animation-duration: 9s; animation-delay: -4s; }
+    .bg-pad:nth-child(5n) { animation-duration: 6s; animation-delay: -1s; }
+    @keyframes ll-pad { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+    .bg-bloom { animation: ll-bloom 8s ease-in-out infinite; }
+    .bg-bloom-b { animation-duration: 10s; animation-delay: -3s; }
+    .bg-bloom-c { animation-duration: 9s; animation-delay: -6s; }
+    @keyframes ll-bloom { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+    .bg-bloom-a { transform-origin: 500px 672px; }
+    .bg-bloom-b { transform-origin: 980px 700px; }
+    .bg-bloom-c { transform-origin: 1240px 636px; }
+
+    .bg-wave { stroke-dasharray: 220; stroke-dashoffset: 220; animation: ll-wave 8s linear infinite; }
+    .bg-wave:nth-child(2) { animation-duration: 10s; animation-delay: -4s; }
+    @keyframes ll-wave { to { stroke-dashoffset: -220; } }
+
+    /* ---- 人物动画：送别之礼 ---- */
+    .fg-host { animation: ll-breathe 7s ease-in-out infinite; transform-origin: 688px 806px; }
+    @keyframes ll-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+    .fg-guest { animation: ll-breathe2 7.6s ease-in-out infinite; transform-origin: 788px 806px; }
+    @keyframes ll-breathe2 { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+    /* 拱手起落，一送一别 */
+    .fg-harm { animation: ll-bow 12s ease-in-out infinite; transform-origin: 710px 712px; }
+    @keyframes ll-bow { 0%,100% { transform: rotate(0deg); } 40% { transform: rotate(-9deg); } 70% { transform: rotate(-9deg); } }
+    .fg-garm { animation: ll-bow2 12s ease-in-out infinite; transform-origin: 766px 716px; }
+    @keyframes ll-bow2 { 0%,100% { transform: rotate(0deg); } 45% { transform: rotate(9deg); } 75% { transform: rotate(9deg); } }
+    .fg-hhead { animation: ll-nod 12s ease-in-out infinite; transform-origin: 688px 688px; }
+    @keyframes ll-nod { 0%,100% { transform: rotate(0deg); } 40% { transform: rotate(4deg); } 70% { transform: rotate(4deg); } }
+  </style>
+</svg>

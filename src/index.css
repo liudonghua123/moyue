@@ -184,7 +184,7 @@ p { text-wrap: pretty; }
 .scene-card-body { padding: 18px 20px 22px; display: flex; flex-direction: column; flex: 1; }
 .scene-card-body h3 {
   font-family: var(--font-kai);
-  font-size: 26px; letter-spacing: 0.12em;
+  font-size: clamp(20px, 1.8vw, 26px); letter-spacing: 0.12em;
   transition: color 0.4s var(--ease);
 }
 .scene-card:hover .scene-card-body h3 { color: var(--accent); }
@@ -437,8 +437,8 @@ p { text-wrap: pretty; }
   transition: color 0.3s var(--ease), transform 0.4s var(--ease);
 }
 .poem-topbar .back:hover { color: var(--ink); transform: translateX(-3px); }
-.poem-switch { display: flex; gap: 14px; }
-.poem-switch a { font-size: 15px; color: var(--muted); transition: color 0.3s var(--ease); }
+.poem-switch { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: flex-end; max-width: 60vw; }
+.poem-switch a { font-size: 15px; color: var(--muted); transition: color 0.3s var(--ease); white-space: nowrap; }
 .poem-switch a:hover { color: var(--ink); }
 .poem-switch a.current { color: var(--accent); }
 
@@ -483,6 +483,8 @@ p { text-wrap: pretty; }
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .shelf-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .poem-switch { max-width: 46vw; gap: 4px 10px; }
+  .poem-switch a { font-size: 13px; }
   .hero-dots { flex-direction: row; right: auto; left: var(--margin); bottom: clamp(36px, 7vh, 80px); }
   .hero-dots span { width: 22px; height: 5px; }
   .hero-dots span.on { width: 34px; height: 5px; }
