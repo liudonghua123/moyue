@@ -1,105 +1,185 @@
-<svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="w-sky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#2e2438"/>
-        <stop offset="0.45" stop-color="#7a4a3e"/>
-        <stop offset="0.75" stop-color="#c67f4a"/>
-        <stop offset="1" stop-color="#e0a463"/>
-      </linearGradient>
-      <linearGradient id="w-river" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#d99a5c"/>
-        <stop offset="0.4" stop-color="#a86a44"/>
-        <stop offset="1" stop-color="#5c4433"/>
-      </linearGradient>
-      <linearGradient id="w-m1" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#6b4a52"/><stop offset="1" stop-color="#4a3540"/>
-      </linearGradient>
-      <linearGradient id="w-m2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#3f2f3c"/><stop offset="1" stop-color="#2c2130"/>
-      </linearGradient>
-      <filter id="w-soft" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="10"/>
-      </filter>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="st-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3f55"/>
+      <stop offset="0.45" stop-color="#6f5a63"/>
+      <stop offset="0.75" stop-color="#b0785f"/>
+      <stop offset="1" stop-color="#d29a6a"/>
+    </linearGradient>
+    <radialGradient id="st-sunglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffdda1" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffdda1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="st-m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c4a56"/><stop offset="1" stop-color="#4a3d4b"/>
+    </linearGradient>
+    <linearGradient id="st-m2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#443744"/><stop offset="1" stop-color="#362c39"/>
+    </linearGradient>
+    <linearGradient id="st-river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c68d55"/>
+      <stop offset="0.5" stop-color="#9e6b45"/>
+      <stop offset="1" stop-color="#6e4a38"/>
+    </linearGradient>
+    <filter id="st-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
 
-    <rect width="1600" height="900" fill="url(#w-sky)"/>
+  <!-- ======== 背景层：白日依山尽，黄河入海流 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#st-sky)"/>
 
-    <!-- 落日 -->
-    <g class="w-sun">
-      <circle cx="1220" cy="360" r="130" fill="#f2c078" opacity="0.35" filter="url(#w-soft)"/>
-      <circle cx="1220" cy="360" r="58" fill="#f6cd8a"/>
-    </g>
-
-    <!-- 飞鸟 -->
-    <g class="w-birds" stroke="#3a2b30" stroke-width="3" fill="none" stroke-linecap="round">
-      <path class="w-bird" d="M760,190 Q776,174 792,190 Q808,174 824,190"/>
-      <path class="w-bird" d="M880,240 Q893,228 906,240 Q919,228 932,240"/>
-      <path class="w-bird" d="M680,260 Q690,250 700,260 Q710,250 720,260"/>
-    </g>
+    <!-- 残阳：沿漫长周期缓缓西沉 -->
+    <circle class="bg-sun-halo" cx="430" cy="430" r="240" fill="url(#st-sunglow)"/>
+    <circle class="bg-sun" cx="430" cy="430" r="46" fill="#f6c37c"/>
 
     <!-- 远山两重 -->
-    <path d="M0,480 Q220,390 440,460 T880,450 T1320,465 T1600,420 L1600,900 L0,900 Z" fill="url(#w-m1)" filter="url(#w-soft)"/>
-    <path d="M0,560 Q280,470 560,545 T1120,540 T1600,510 L1600,900 L0,900 Z" fill="url(#w-m2)"/>
+    <path d="M0,470 L240,360 L480,450 L760,350 L1040,460 L1300,380 L1600,460 L1600,620 L0,620 Z" fill="url(#st-m1)" filter="url(#st-soft)" opacity="0.9"/>
+    <path d="M0,540 L300,440 L580,530 L900,430 L1200,540 L1600,460 L1600,660 L0,660 Z" fill="url(#st-m2)"/>
 
-    <!-- 黄河 -->
-    <g class="w-water">
-      <rect y="620" width="1600" height="280" fill="url(#w-river)"/>
-      <g stroke="#f2c078" stroke-width="3" opacity="0.5">
-        <path class="w-flow" d="M200,680 Q400,672 600,680" fill="none"/>
-        <path class="w-flow" d="M800,720 Q1000,712 1200,720" fill="none"/>
-        <path class="w-flow" d="M300,780 Q520,770 740,780" fill="none"/>
-        <path class="w-flow" d="M1000,830 Q1220,822 1440,830" fill="none"/>
-      </g>
-      <ellipse cx="1220" cy="640" rx="180" ry="14" fill="#f6cd8a" opacity="0.4"/>
+    <!-- 黄河：金色江面与流动水纹 -->
+    <rect y="620" width="1600" height="280" fill="url(#st-river)"/>
+    <g stroke="#e8b473" stroke-width="2.4" fill="none" opacity="0.55">
+      <path class="bg-wave" d="M60,680 Q180,672 300,680 T540,680"/>
+      <path class="bg-wave" d="M900,720 Q1040,712 1180,720 T1420,720"/>
+      <path class="bg-wave" d="M220,790 Q380,780 540,790 T860,790"/>
+      <path class="bg-wave" d="M1080,850 Q1240,842 1400,850"/>
     </g>
 
-    <!-- 鹳雀楼高台 -->
-    <g class="w-tower">
-      <rect x="0" y="560" width="240" height="340" fill="#241a26"/>
-      <path d="M-20,560 Q100,510 260,560 L260,590 Q100,542 -20,590 Z" fill="#1a121c"/>
-      <rect x="40" y="620" width="160" height="90" fill="#33243a"/>
-      <g stroke="#1a121c" stroke-width="6">
-        <line x1="120" y1="620" x2="120" y2="710"/>
-        <line x1="40" y1="665" x2="200" y2="665"/>
-      </g>
+    <!-- 归鸟一列，掠向落日 -->
+    <g class="bg-birds" fill="#3a2f3c">
+      <path class="bird" d="M980,300 q10,-9 20,0 q10,-9 20,0" stroke="#3a2f3c" stroke-width="3" fill="none"/>
+      <path class="bird" d="M1060,340 q8,-7 16,0 q8,-7 16,0" stroke="#3a2f3c" stroke-width="2.6" fill="none"/>
+      <path class="bird" d="M1010,380 q7,-6 14,0 q7,-6 14,0" stroke="#3a2f3c" stroke-width="2.2" fill="none"/>
+      <path class="bird" d="M1120,290 q9,-8 18,0 q9,-8 18,0" stroke="#3a2f3c" stroke-width="2.8" fill="none"/>
     </g>
 
-    <!-- 凭栏诗人（右侧前景，背对观众） -->
-    <g class="w-figure">
-      <rect x="1180" y="770" width="420" height="130" fill="#1c1420"/>
-      <g>
-        <path d="M1300,900 L1300,760 Q1300,738 1318,730 L1326,706 Q1331,692 1348,692 Q1365,692 1370,706 L1377,730 Q1394,738 1394,760 L1394,900 Z" fill="#221624"/>
-        <circle cx="1348" cy="684" r="19" fill="#221624"/>
-        <path d="M1330,690 Q1348,664 1372,686 L1372,700 Q1350,680 1330,700 Z" fill="#221624"/>
-        <!-- 广袖 -->
-        <path class="w-sleeve" d="M1372,742 Q1420,720 1436,680 Q1444,664 1432,660 Q1420,658 1414,672 Q1400,706 1366,724 Z" fill="#221624"/>
-        <path d="M1326,742 Q1300,730 1288,744 L1296,756 Q1312,748 1330,754 Z" fill="#221624"/>
+    <!-- 暮霭层 -->
+    <ellipse class="bg-haze" cx="500" cy="600" rx="560" ry="60" fill="#caa07a" opacity="0.28" filter="url(#st-soft)"/>
+  </g>
+
+  <!-- ======== 人物层：鹳雀楼上的诗人 ======== -->
+  <g class="fg">
+    <g class="fg-tower">
+      <!-- 楼身三层，右侧倚立 -->
+      <rect x="1120" y="470" width="240" height="150" fill="#2b2230"/>
+      <rect x="1148" y="360" width="184" height="112" fill="#332839"/>
+      <rect x="1172" y="272" width="136" height="90" fill="#3a2e42"/>
+      <!-- 檐 -->
+      <path class="fg-eave" d="M1096,470 Q1240,436 1384,470 L1384,482 Q1240,452 1096,482 Z" fill="#201826"/>
+      <path d="M1128,360 Q1240,330 1352,360 L1352,372 Q1240,346 1128,372 Z" fill="#201826"/>
+      <path d="M1152,272 Q1240,248 1328,272 L1328,283 Q1240,263 1152,283 Z" fill="#201826"/>
+      <!-- 栏杆与窗棂 -->
+      <g stroke="#191220" stroke-width="3">
+        <line x1="1140" y1="500" x2="1340" y2="500"/>
+        <line x1="1160" y1="478" x2="1160" y2="500"/>
+        <line x1="1200" y1="478" x2="1200" y2="500"/>
+        <line x1="1240" y1="478" x2="1240" y2="500"/>
+        <line x1="1280" y1="478" x2="1280" y2="500"/>
+        <line x1="1320" y1="478" x2="1320" y2="500"/>
       </g>
-      <rect x="1376" y="776" width="224" height="10" fill="#160f1a"/>
-      <g stroke="#160f1a" stroke-width="8">
-        <line x1="1400" y1="776" x2="1400" y2="900"/>
-        <line x1="1520" y1="776" x2="1520" y2="900"/>
-        <line x1="1610" y1="776" x2="1610" y2="900"/>
+      <rect x="1196" y="392" width="36" height="52" fill="#1d1624"/>
+      <rect x="1252" y="392" width="36" height="52" fill="#1d1624"/>
+      <rect x="1200" y="300" width="30" height="42" fill="#221a2a"/>
+      <rect x="1252" y="300" width="30" height="42" fill="#221a2a"/>
+
+      <!-- 诗人：凭栏远望，更上一层楼 -->
+      <g class="fg-poet">
+        <!-- 袍身 -->
+        <path class="fg-robe" d="M1078,500 Q1082,458 1102,452 L1118,452 Q1138,458 1142,500 L1146,548 L1074,548 Z" fill="#2e2437"/>
+        <path d="M1102,452 L1118,452 L1116,548 L1104,548 Z" fill="#3c3049"/>
+        <!-- 头与望远的目光 -->
+        <circle class="fg-poet-head" cx="1110" cy="434" r="15" fill="#171320"/>
+        <!-- 发髻 -->
+        <circle class="fg-bun" cx="1110" cy="418" r="6" fill="#171320"/>
+        <line x1="1110" y1="418" x2="1126" y2="424" stroke="#171320" stroke-width="3"/>
+        <!-- 远眺的臂：抬指山河 -->
+        <path class="fg-arm" d="M1136,468 L1162,448 L1170,436" stroke="#2e2437" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- 广袖随风 -->
+        <path class="fg-sleeve" d="M1136,470 Q1150,452 1166,448 Q1176,446 1174,458 Q1166,472 1146,482 Z" fill="#3c3049"/>
+        <!-- 凭栏的手 -->
+        <path d="M1084,470 L1076,496" stroke="#2e2437" stroke-width="9" stroke-linecap="round"/>
+      </g>
+      <!-- 平座：从楼身向左伸出，托住诗人 -->
+      <rect x="1058" y="500" width="130" height="10" fill="#201826"/>
+      <path d="M1070,510 L1090,620 L1106,620 L1088,510 Z" fill="#241b2b"/>
+      <g stroke="#201826" stroke-width="3">
+        <line x1="1070" y1="478" x2="1070" y2="500"/>
+        <line x1="1106" y1="478" x2="1106" y2="500"/>
+        <line x1="1142" y1="478" x2="1142" y2="500"/>
+        <line x1="1178" y1="478" x2="1178" y2="500"/>
+        <line x1="1160" y1="478" x2="1160" y2="500"/>
+        <line x1="1200" y1="478" x2="1200" y2="500"/>
+        <line x1="1240" y1="478" x2="1240" y2="500"/>
+        <line x1="1280" y1="478" x2="1280" y2="500"/>
+        <line x1="1320" y1="478" x2="1320" y2="500"/>
       </g>
     </g>
-  </svg>
+  </g>
+
   <style>
-    .w-sun { animation: w-sun-sink 26s ease-in-out infinite; transform-origin: 1220px 360px; }
-    @keyframes w-sun-sink { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(14px) scale(1.04); } }
+    /* ---- 背景动画：白日依山尽的漫长天时 ---- */
+    /* 残阳西沉：40s 一个漫长周期，沉而复升（视觉循环） */
+    .bg-sun { animation: st-sink 40s ease-in-out infinite; transform-origin: 430px 430px; }
+    .bg-sun-halo { animation: st-sink 40s ease-in-out infinite, st-halo 9s ease-in-out infinite; transform-origin: 430px 430px; }
+    @keyframes st-sink { 0%,100% { transform: translateY(0); } 55% { transform: translateY(58px); } }
+    @keyframes st-halo { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
 
-    .w-bird { stroke-dasharray: 130; stroke-dashoffset: 130; animation: w-fly 9s linear infinite; }
-    .w-bird:nth-child(2) { animation-delay: 2s; }
-    .w-bird:nth-child(3) { animation-delay: 4s; }
-    @keyframes w-fly { 0% { stroke-dashoffset: 130; } 60%,100% { stroke-dashoffset: -130; } }
+    /* 黄河水纹流动 */
+    .bg-wave { stroke-dasharray: 260; stroke-dashoffset: 260; animation: st-flow 8s linear infinite; }
+    .bg-wave:nth-child(2n) { animation-duration: 11s; animation-delay: -3s; }
+    .bg-wave:nth-child(3n) { animation-duration: 9.5s; animation-delay: -5s; }
+    @keyframes st-flow { to { stroke-dashoffset: -260; } }
 
-    .w-flow { stroke-dasharray: 220; stroke-dashoffset: 220; animation: w-river-flow 6s linear infinite; }
-    .w-flow:nth-child(2n) { animation-duration: 8s; }
-    .w-flow:nth-child(3n) { animation-duration: 5s; }
-    @keyframes w-river-flow { to { stroke-dashoffset: -220; } }
+    /* 归鸟掠过：慢速横移 */
+    .bird { animation: st-bird 22s linear infinite; }
+    .bird:nth-child(2) { animation-delay: -6s; animation-duration: 26s; }
+    .bird:nth-child(3) { animation-delay: -12s; }
+    .bird:nth-child(4) { animation-delay: -16s; animation-duration: 24s; }
+    @keyframes st-bird {
+      from { transform: translate(0, 0); }
+      50% { transform: translate(-70px, -14px); }
+      to { transform: translate(-140px, 4px); }
+    }
 
-    .w-figure { animation: w-figure-breathe 8s ease-in-out infinite; transform-origin: 1348px 900px; }
-    @keyframes w-figure-breathe { 0%,100% { transform: scale(1); } 50% { transform: scaleY(0.99) rotate(0.2deg); } }
+    /* 暮霭飘移 */
+    .bg-haze { animation: st-haze 26s ease-in-out infinite; }
+    @keyframes st-haze { 0%,100% { transform: translateX(-30px); } 50% { transform: translateX(30px); } }
 
-    .w-sleeve { animation: w-sleeve 10s ease-in-out infinite; transform-origin: 1372px 742px; }
-    @keyframes w-sleeve { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-7deg); } }
+    /* ---- 人物动画：诗人的凭栏时刻 ---- */
+    /* 楼身极缓的呼吸般微晃（高楼临风） */
+    .fg-tower { animation: st-tower 12s ease-in-out infinite; transform-origin: 1240px 620px; }
+    @keyframes st-tower { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(0.4deg); } }
+
+    /* 诗人衣袍呼吸 */
+    .fg-poet { animation: st-breathe 7s ease-in-out infinite; transform-origin: 1110px 548px; }
+    @keyframes st-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+
+    /* 远望的头：久久凝视山河，缓缓抬起（更上一层楼的意气） */
+    .fg-poet-head { animation: st-gaze 14s ease-in-out infinite; transform-origin: 1110px 448px; }
+    @keyframes st-gaze {
+      0%,100% { transform: rotate(0deg); }
+      40% { transform: rotate(-5deg); }
+      75% { transform: rotate(-8deg); }
+    }
+    /* 发髻随抬头轻点 */
+    .fg-bun { animation: st-bun 14s ease-in-out infinite; transform-origin: 1110px 434px; }
+    @keyframes st-bun {
+      0%,100% { transform: rotate(0deg); }
+      75% { transform: rotate(-8deg); }
+    }
+
+    /* 抬臂指远：缓慢起落，似在指点江山 */
+    .fg-arm { animation: st-arm 14s ease-in-out infinite; transform-origin: 1136px 468px; }
+    @keyframes st-arm {
+      0%,100% { transform: rotate(0deg); }
+      45% { transform: rotate(-7deg); }
+      70% { transform: rotate(-7deg); }
+    }
+
+    /* 广袖当风 */
+    .fg-sleeve { animation: st-sleeve 9s ease-in-out infinite; transform-origin: 1136px 470px; }
+    @keyframes st-sleeve { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(4deg); } }
   </style>
+</svg>

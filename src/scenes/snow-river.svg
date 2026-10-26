@@ -1,96 +1,155 @@
-<svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="s-sky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#232a33"/>
-        <stop offset="0.6" stop-color="#3a444f"/>
-        <stop offset="1" stop-color="#55606b"/>
-      </linearGradient>
-      <linearGradient id="s-river" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#6a7580"/>
-        <stop offset="1" stop-color="#49525c"/>
-      </linearGradient>
-      <linearGradient id="s-m1" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#c9d2d8"/><stop offset="1" stop-color="#9aa7b0"/>
-      </linearGradient>
-      <linearGradient id="s-m2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#e4eaee"/><stop offset="1" stop-color="#b9c4cc"/>
-      </linearGradient>
-      <filter id="s-soft" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="10"/>
-      </filter>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="sx-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e242d"/>
+      <stop offset="0.6" stop-color="#343e49"/>
+      <stop offset="1" stop-color="#4d5863"/>
+    </linearGradient>
+    <linearGradient id="sx-river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#65707b"/>
+      <stop offset="1" stop-color="#434c56"/>
+    </linearGradient>
+    <linearGradient id="sx-m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4cdd4"/><stop offset="1" stop-color="#94a1ab"/>
+    </linearGradient>
+    <linearGradient id="sx-m2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2e8ec"/><stop offset="1" stop-color="#b3bec6"/>
+    </linearGradient>
+    <filter id="sx-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
 
-    <rect width="1600" height="900" fill="url(#s-sky)"/>
+  <!-- ======== 背景层 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#sx-sky)"/>
 
-    <!-- 远山积雪 -->
-    <path d="M0,430 L180,300 L340,410 L520,280 L700,400 L900,320 L1080,420 L1260,310 L1440,410 L1600,340 L1600,560 L0,560 Z" fill="url(#s-m1)" filter="url(#s-soft)" opacity="0.9"/>
-    <path d="M0,500 L220,390 L420,490 L640,380 L860,480 L1100,400 L1320,490 L1600,420 L1600,620 L0,620 Z" fill="url(#s-m2)"/>
+    <!-- 雪山两重 -->
+    <path d="M0,430 L180,300 L340,410 L520,280 L700,400 L900,320 L1080,420 L1260,310 L1440,410 L1600,340 L1600,560 L0,560 Z" fill="url(#sx-m1)" filter="url(#sx-soft)" opacity="0.9"/>
+    <path d="M0,500 L220,390 L420,490 L640,380 L860,480 L1100,400 L1320,490 L1600,420 L1600,620 L0,620 Z" fill="url(#sx-m2)"/>
 
     <!-- 江面 -->
-    <rect y="560" width="1600" height="340" fill="url(#s-river)"/>
-    <g class="s-ripples" stroke="#7d8893" stroke-width="2" opacity="0.4">
-      <path d="M120,640 Q220,634 320,640" fill="none"/>
-      <path d="M1150,700 Q1260,694 1370,700" fill="none"/>
-      <path d="M420,760 Q560,752 700,760" fill="none"/>
-      <path d="M900,820 Q1030,814 1160,820" fill="none"/>
+    <rect y="560" width="1600" height="340" fill="url(#sx-river)"/>
+    <g stroke="#79848f" stroke-width="2" opacity="0.4">
+      <path class="bg-ripple" d="M120,640 Q220,634 320,640" fill="none"/>
+      <path class="bg-ripple" d="M1150,700 Q1260,694 1370,700" fill="none"/>
+      <path class="bg-ripple" d="M420,780 Q560,772 700,780" fill="none"/>
+      <path class="bg-ripple" d="M900,840 Q1030,834 1160,840" fill="none"/>
     </g>
 
-    <!-- 孤舟与蓑笠翁 -->
-    <g class="s-boat">
-      <path d="M620,700 Q800,660 980,700 L940,740 Q800,756 660,740 Z" fill="#20262e"/>
-      <path d="M640,700 Q800,668 960,700" fill="none" stroke="#39424c" stroke-width="4"/>
+    <!-- 飞雪：三层深浅，各自飘落 -->
+    <g class="bg-snow bg-snow-far" fill="#dce3e8" opacity="0.45">
+      <circle class="flake" cx="100" cy="100" r="2"/>
+      <circle class="flake" cx="300" cy="180" r="1.6"/>
+      <circle class="flake" cx="520" cy="90" r="2"/>
+      <circle class="flake" cx="740" cy="200" r="1.5"/>
+      <circle class="flake" cx="960" cy="120" r="2"/>
+      <circle class="flake" cx="1180" cy="230" r="1.6"/>
+      <circle class="flake" cx="1400" cy="100" r="2"/>
+      <circle class="flake" cx="1520" cy="260" r="1.5"/>
+      <circle class="flake" cx="200" cy="320" r="1.8"/>
+      <circle class="flake" cx="640" cy="330" r="1.5"/>
+      <circle class="flake" cx="1060" cy="360" r="1.8"/>
+      <circle class="flake" cx="1440" cy="380" r="1.5"/>
+    </g>
+    <g class="bg-snow bg-snow-mid" fill="#e9eff3" opacity="0.65">
+      <circle class="flake" cx="60" cy="200" r="2.6"/>
+      <circle class="flake" cx="340" cy="400" r="2.4"/>
+      <circle class="flake" cx="600" cy="140" r="2.8"/>
+      <circle class="flake" cx="880" cy="380" r="2.5"/>
+      <circle class="flake" cx="1120" cy="80" r="2.6"/>
+      <circle class="flake" cx="1360" cy="300" r="2.4"/>
+      <circle class="flake" cx="1560" cy="140" r="2.8"/>
+      <circle class="flake" cx="240" cy="540" r="2.5"/>
+      <circle class="flake" cx="980" cy="500" r="2.4"/>
+      <circle class="flake" cx="1460" cy="620" r="2.5"/>
+    </g>
+    <g class="bg-snow bg-snow-near" fill="#f1f6f9" opacity="0.9">
+      <circle class="flake" cx="80" cy="480" r="3.4"/>
+      <circle class="flake" cx="360" cy="640" r="3"/>
+      <circle class="flake" cx="620" cy="420" r="3.6"/>
+      <circle class="flake" cx="900" cy="700" r="3.2"/>
+      <circle class="flake" cx="1140" cy="560" r="3.4"/>
+      <circle class="flake" cx="1380" cy="760" r="3"/>
+      <circle class="flake" cx="1560" cy="480" r="3.6"/>
+      <circle class="flake" cx="160" cy="800" r="3.4"/>
+      <circle class="flake" cx="720" cy="860" r="3.2"/>
+      <circle class="flake" cx="1260" cy="860" r="3.4"/>
+    </g>
+  </g>
+
+  <!-- ======== 人物层：孤舟蓑笠翁 ======== -->
+  <g class="fg">
+    <g class="fg-boat">
+      <!-- 舟体 -->
+      <path d="M620,700 Q800,660 980,700 L940,742 Q800,758 660,742 Z" fill="#1e242c"/>
+      <path d="M640,700 Q800,668 960,700" fill="none" stroke="#363f49" stroke-width="4"/>
       <!-- 船篷 -->
-      <path d="M760,668 Q820,630 880,668 Z" fill="#2a313b"/>
-      <!-- 人 -->
-      <g class="s-figure">
-        <circle cx="676" cy="608" r="12" fill="#12161c"/>
-        <path d="M656,604 Q676,586 696,604 Q676,596 656,604 Z" fill="#12161c"/>
-        <path d="M664,584 Q676,566 688,584 L692,600 L660,600 Z" fill="#3f4750"/>
-        <path d="M658,596 L694,596 L690,586 L662,586 Z" fill="#57616b"/>
-        <path d="M662,620 L690,620 L686,672 L666,672 Z" fill="#39424c"/>
-        <path class="s-rod" d="M668,624 L720,540" stroke="#161b22" stroke-width="4" stroke-linecap="round"/>
-        <line class="s-line" x1="720" y1="540" x2="720" y2="700" stroke="#aeb8c0" stroke-width="1.5" opacity="0.7"/>
+      <path d="M770,666 Q830,626 890,666 Z" fill="#28303a"/>
+      <path d="M782,662 Q830,634 878,662" fill="none" stroke="#39424c" stroke-width="3"/>
+
+      <!-- 蓑笠翁：垂钓姿势，随波轻晃 -->
+      <g class="fg-fisher">
+        <!-- 身 -->
+        <path d="M662,622 L690,622 L686,674 L666,674 Z" fill="#353e48"/>
+        <!-- 蓑衣纹理 -->
+        <g stroke="#2c343e" stroke-width="2">
+          <line x1="664" y1="636" x2="688" y2="636"/>
+          <line x1="665" y1="650" x2="687" y2="650"/>
+          <line x1="666" y1="662" x2="686" y2="662"/>
+        </g>
+        <!-- 头 -->
+        <circle class="fg-fisher-head" cx="676" cy="608" r="12" fill="#12161c"/>
+        <!-- 斗笠 -->
+        <path class="fg-hat" d="M654,604 Q676,584 698,604 L692,600 L660,600 Z" fill="#414b55"/>
+        <path d="M656,602 Q676,586 696,602 Q676,596 656,602 Z" fill="#525c66"/>
+        <!-- 钓竿与线 -->
+        <path class="fg-rod" d="M668,626 L724,536" stroke="#141920" stroke-width="4" stroke-linecap="round"/>
+        <path class="fg-line" d="M724,536 Q730,600 722,660 Q718,690 720,706" stroke="#b6c0c8" stroke-width="1.4" fill="none" opacity="0.7"/>
       </g>
     </g>
+  </g>
 
-    <!-- 飞雪 -->
-    <g class="s-snow-far" fill="#dfe6ea" opacity="0.5">
-      <circle cx="100" cy="100" r="2"/><circle cx="300" cy="180" r="1.6"/><circle cx="520" cy="90" r="2"/>
-      <circle cx="740" cy="200" r="1.5"/><circle cx="960" cy="120" r="2"/><circle cx="1180" cy="230" r="1.6"/>
-      <circle cx="1400" cy="100" r="2"/><circle cx="1520" cy="260" r="1.5"/><circle cx="200" cy="320" r="1.8"/>
-      <circle cx="640" cy="330" r="1.5"/><circle cx="1060" cy="360" r="1.8"/><circle cx="1440" cy="380" r="1.5"/>
-    </g>
-    <g class="s-snow-near" fill="#eef3f6" opacity="0.85">
-      <circle cx="80" cy="240" r="3.2"/><circle cx="360" cy="420" r="2.8"/><circle cx="600" cy="160" r="3.4"/>
-      <circle cx="880" cy="380" r="3"/><circle cx="1120" cy="90" r="3.2"/><circle cx="1360" cy="320" r="2.8"/>
-      <circle cx="1560" cy="160" r="3.4"/><circle cx="240" cy="560" r="3"/><circle cx="480" cy="640" r="3.2"/>
-      <circle cx="1020" cy="560" r="2.8"/><circle cx="1300" cy="660" r="3"/><circle cx="1560" cy="540" r="3.2"/>
-      <circle cx="160" cy="760" r="3.4"/><circle cx="720" cy="820" r="3"/><circle cx="1180" cy="800" r="3.2"/>
-    </g>
-  </svg>
   <style>
-    .s-ripples path { stroke-dasharray: 200; stroke-dashoffset: 200; animation: s-ripple 7s linear infinite; }
-    .s-ripples path:nth-child(2n) { animation-delay: 2s; }
-    .s-ripples path:nth-child(3n) { animation-delay: 4s; }
-    @keyframes s-ripple { to { stroke-dashoffset: -200; } }
+    /* ---- 背景动画 ---- */
+    .bg-ripple { stroke-dasharray: 200; stroke-dashoffset: 200; animation: sx-ripple 7s linear infinite; }
+    .bg-ripple:nth-child(2n) { animation-delay: 2s; animation-duration: 9s; }
+    .bg-ripple:nth-child(3n) { animation-delay: 4s; animation-duration: 8s; }
+    @keyframes sx-ripple { to { stroke-dashoffset: -200; } }
 
-    .s-boat { animation: s-bob 6s ease-in-out infinite; transform-origin: 800px 720px; }
-    @keyframes s-bob { 0%,100% { transform: rotate(-0.8deg) translateY(0); } 50% { transform: rotate(0.8deg) translateY(-5px); } }
-
-    .s-figure { animation: s-figure-breathe 5s ease-in-out infinite; transform-origin: 676px 672px; }
-    @keyframes s-figure-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
-
-    .s-rod { animation: s-rod-bend 8s ease-in-out infinite; transform-origin: 668px 624px; }
-    @keyframes s-rod-bend { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(1.6deg); } }
-
-    .s-snow-far circle { animation: s-fall 14s linear infinite; }
-    .s-snow-near circle { animation: s-fall 9s linear infinite; }
-    .s-snow-near circle:nth-child(2n) { animation-duration: 11s; }
-    .s-snow-near circle:nth-child(3n) { animation-duration: 13s; }
-    @keyframes s-fall {
-      from { transform: translate(0, -80px); opacity: 0; }
-      10% { opacity: 1; }
+    /* 三层雪，深浅远近各速 */
+    .flake { animation: sx-fall linear infinite; }
+    .bg-snow-far .flake { animation-duration: 16s; }
+    .bg-snow-mid .flake { animation-duration: 11s; }
+    .bg-snow-near .flake { animation-duration: 8s; }
+    .flake:nth-child(2n) { animation-duration: 13s; animation-delay: -3s; }
+    .flake:nth-child(3n) { animation-duration: 10s; animation-delay: -6s; }
+    .flake:nth-child(5n) { animation-delay: -9s; }
+    @keyframes sx-fall {
+      from { transform: translate(0, -60px); opacity: 0; }
+      8% { opacity: 1; }
       90% { opacity: 1; }
-      to { transform: translate(60px, 760px); opacity: 0; }
+      to { transform: translate(80px, 720px); opacity: 0; }
     }
+
+    /* ---- 人物动画 ---- */
+    /* 孤舟随波，翁在舟上 */
+    .fg-boat { animation: sx-bob 7s ease-in-out infinite; transform-origin: 800px 720px; }
+    @keyframes sx-bob { 0%,100% { transform: rotate(-1deg) translateY(0); } 50% { transform: rotate(1deg) translateY(-6px); } }
+
+    .fg-fisher { animation: sx-fisher-breathe 5.5s ease-in-out infinite; transform-origin: 676px 674px; }
+    @keyframes sx-fisher-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.98); } }
+
+    /* 斗笠下的头微微低望水面 */
+    .fg-fisher-head { animation: sx-watch 11s ease-in-out infinite; transform-origin: 676px 620px; }
+    @keyframes sx-watch { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(4deg); } }
+
+    /* 钓竿随波轻颤 */
+    .fg-rod { animation: sx-rod 8s ease-in-out infinite; transform-origin: 668px 626px; }
+    @keyframes sx-rod { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(2deg); } }
+
+    /* 钓线微微摆动 */
+    .fg-line { animation: sx-line 6s ease-in-out infinite; transform-origin: 724px 536px; }
+    @keyframes sx-line { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(2.5deg); } }
   </style>
+</svg>

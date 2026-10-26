@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Scene from "../components/Scene.jsx";
 import { POEMS, getPoem } from "../data/poems.js";
 import { PAINTING_URLS } from "../data/paintings.js";
@@ -8,7 +8,7 @@ import { useSpeech } from "../hooks/useSpeech.js";
 
 const EASE = [0.32, 0.72, 0, 1];
 
-/** 诗卡内部元素的入场节奏 */
+/** 诗牌内部元素的入场节奏 */
 const cardItem = {
   hidden: { opacity: 0, y: 24 },
   show: (i) => ({
@@ -17,14 +17,36 @@ const cardItem = {
   }),
 };
 
+const TABS = [
+  { key: "translation", label: "译" },
+  { key: "appreciation", label: "赏" },
+  { key: "background", label: "背景" },
+  { key: "painting", label: "画卷" },
+];
+
 export default function PoemPage() {
   const { id } = useParams();
   const poem = getPoem(id);
   const { playing, speakingIndex, toggle } = useSpeech(poem);
+  const [tab, setTab] = useState("translation");
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     document.title = `${poem.title} · ${poem.author} · 墨月`;
   }, [poem]);
+
+  // 切诗时收起抽屉并回到第一个标签
+  useEffect(() => {
+    setDrawerOpen(false);
+    setTab("translation");
+  }, [poem.id]);
+
+  // Esc 关闭抽屉
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setDrawerOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const idx = POEMS.indexOf(poem);
 
@@ -44,11 +66,12 @@ export default function PoemPage() {
 
       <div className="scene-caption" aria-hidden="true">{poem.sceneDesc}</div>
 
+      {/* 诗牌：居左，让画面呼吸 */}
       <motion.article
         className="poem-card"
         aria-live="polite"
-        initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, x: -32, filter: "blur(8px)" }}
+        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
         transition={{ duration: 1.1, ease: EASE, delay: 0.15 }}
       >
         <motion.h1 className="poem-title" custom={0} variants={cardItem} initial="hidden" animate="show">
@@ -62,30 +85,73 @@ export default function PoemPage() {
             <li key={i} className={speakingIndex === i ? "speaking" : ""}>{line}</li>
           ))}
         </motion.ol>
-        <motion.div className="poem-details" custom={3} variants={cardItem} initial="hidden" animate="show">
-          <div className="detail">
-            <h3>译</h3>
-            <p>{poem.translation}</p>
-          </div>
-          <div className="detail">
-            <h3>赏</h3>
-            <p>{poem.appreciation}</p>
-          </div>
-          <div className="detail">
-            <h3>背景</h3>
-            <p>{poem.background}</p>
-          </div>
-        </motion.div>
-        <motion.div className="poem-tags" custom={4} variants={cardItem} initial="hidden" animate="show">
-          {poem.tags.map((t) => <span key={t}>{t}</span>)}
-        </motion.div>
-        {poem.painting && (
-          <motion.figure className="poem-painting" custom={5} variants={cardItem} initial="hidden" animate="show">
-            <img src={PAINTING_URLS[poem.painting.src]} alt={poem.painting.caption} loading="lazy" width="1000" height="800" />
-            <figcaption>{poem.painting.caption}</figcaption>
-          </motion.figure>
-        )}
+        <motion.p className="poem-first-feel" custom={3} variants={cardItem} initial="hidden" animate="show">
+          {poem.translation.split("。")[0]}。
+        </motion.p>
       </motion.article>
+
+      {/* 释义抽屉开关 */}
+      <motion.button
+        className={`drawer-toggle ${drawerOpen ? "open" : ""}`}
+        onClick={() => setDrawerOpen((v) => !v)}
+        aria-expanded={drawerOpen}
+        aria-controls="poem-drawer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.9 }}
+      >
+        {drawerOpen ? "收起" : "释义"}
+      </motion.button>
+
+      {/* 释义抽屉：译 / 赏 / 背景 / 画卷 */}
+      <AnimatePresence>
+        {drawerOpen && (
+          <motion.aside
+            id="poem-drawer"
+            className="poem-drawer"
+            initial={{ x: "105%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "105%" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            aria-label={`${poem.title} 释义`}
+          >
+            <div className="drawer-tabs" role="tablist" aria-label="释义分类">
+              {TABS.map((t) => (
+                <button
+                  key={t.key}
+                  role="tab"
+                  aria-selected={tab === t.key}
+                  className={tab === t.key ? "active" : ""}
+                  onClick={() => setTab(t.key)}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+            <div className="drawer-body" role="tabpanel">
+              {tab === "painting" ? (
+                poem.painting && (
+                  <figure className="drawer-painting">
+                    <img
+                      src={PAINTING_URLS[poem.painting.src]}
+                      alt={poem.painting.caption}
+                      loading="lazy"
+                      width="1000"
+                      height="800"
+                    />
+                    <figcaption>{poem.painting.caption}</figcaption>
+                  </figure>
+                )
+              ) : (
+                <p>{poem[tab]}</p>
+              )}
+            </div>
+            <div className="drawer-tags">
+              {poem.tags.map((t) => <span key={t}>{t}</span>)}
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
 
       <nav className="poem-topbar" aria-label="诗页导航">
         <Link className="back" to="/">← 回到诗卷</Link>

@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Scene from "../components/Scene.jsx";
 import { POEMS } from "../data/poems.js";
 import imgLandscape from "../assets/landscape.jpg";
@@ -7,12 +8,14 @@ import imgPavilion from "../assets/landscape-with-pavilion.jpg";
 import imgMountain from "../assets/mountain-landscape.jpg";
 import imgStream from "../assets/landscape-2.jpg";
 
+const EASE = [0.32, 0.72, 0, 1];
+
 /** 滚动进入：轻微上浮 + 模糊消散 */
 const riseIn = {
   hidden: { opacity: 0, y: 28, filter: "blur(6px)" },
   show: {
     opacity: 1, y: 0, filter: "blur(0px)",
-    transition: { duration: 0.9, ease: [0.32, 0.72, 0, 1] },
+    transition: { duration: 0.9, ease: EASE },
   },
 };
 
@@ -22,6 +25,129 @@ const GALLERY = [
   { cls: "g-c", src: imgMountain, alt: "群山楼阁，十八世纪水墨", cap: "群山楼阁 · 曾我萧白" },
   { cls: "g-d", src: imgStream, alt: "溪山楼观，十五世纪末水墨挂轴", cap: "溪山楼观 · 佚名" },
 ];
+
+/** Hero 场景轮播：每 9 秒换一境，联动诗句 */
+function useHeroScene() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % POEMS.length), 9000);
+    return () => clearInterval(t);
+  }, []);
+  return i;
+}
+
+function Hero() {
+  const idx = useHeroScene();
+  const poem = POEMS[idx];
+  return (
+    <header className="hero" aria-label="首屏：四境轮播">
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={poem.id}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.6, ease: EASE }}
+          style={{ position: "absolute", inset: 0 }}
+          aria-hidden="true"
+        >
+          <Scene sceneKey={poem.scene} />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="hero-content">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15, delayChildren: 0.4 } } }}
+        >
+          <motion.h1
+            className="hero-title"
+            variants={{ hidden: { opacity: 0, y: 32 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: EASE } } }}
+          >
+            一诗<span className="accent">一</span>境
+          </motion.h1>
+          <motion.p
+            className="hero-sub"
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } } }}
+          >
+            走进唐诗发生的时刻。每一页只有一首诗：全屏动态画境，人物与山水各自动，还有一段朗读，替古人开口。
+          </motion.p>
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } } }}
+          >
+            <Link className="hero-cta" to={`/poem/${poem.id}`}>
+              入「{poem.title}」之境
+            </Link>
+          </motion.div>
+          <motion.div
+            className="hero-verses"
+            aria-live="off"
+            variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 1.2, delay: 0.6 } } }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={poem.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.8, ease: EASE }}
+              >
+                {poem.lines[0]}
+                <span className="hero-verses-rest">{poem.lines[1]}　{poem.lines[2]}　{poem.lines[3]}</span>
+              </motion.p>
+            </AnimatePresence>
+          </motion.div>
+        </motion.div>
+
+        {/* 境点：四境切换指示 */}
+        <div className="hero-dots" role="presentation">
+          {POEMS.map((p, k) => (
+            <span key={p.id} className={k === idx ? "on" : ""} />
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+}
+
+/** 诗卷：场景缩略卡，每张卡内嵌对应动态画境 */
+function Shelf() {
+  return (
+    <section className="shelf" id="shelf" aria-label="诗卷目录">
+      <div className="wrap">
+        <motion.div className="section-head" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={riseIn}>
+          <h2>诗卷</h2>
+          <p>四首诗，四段时辰。点开一境，人在画中。</p>
+        </motion.div>
+        <div className="shelf-grid">
+          {POEMS.map((p, i) => (
+            <motion.div
+              key={p.id}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{ ...riseIn, show: { ...riseIn.show, transition: { ...riseIn.show.transition, delay: i * 0.08 } } }}
+            >
+              <Link className="scene-card" to={`/poem/${p.id}`} aria-label={`进入《${p.title}》`}>
+                <div className="scene-card-art" aria-hidden="true">
+                  <Scene sceneKey={p.scene} />
+                  <span className="scene-card-time">{["夜", "雪", "晨", "暮"][i]}</span>
+                </div>
+                <div className="scene-card-body">
+                  <h3>{p.title}</h3>
+                  <p className="scene-card-author">{p.dynasty} · {p.author}</p>
+                  <p className="scene-card-line">{p.lines[0]}{p.lines[1]}</p>
+                  <span className="scene-card-go">入此境 →</span>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /** 缘起标语：滚动进入时逐句点亮 */
 function Tagline() {
@@ -38,7 +164,7 @@ function Tagline() {
           key={p}
           variants={{
             hidden: { color: "var(--muted)" },
-            show: { color: "var(--ink)", transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] } },
+            show: { color: "var(--ink)", transition: { duration: 0.8, ease: EASE } },
           }}
         >
           {p}
@@ -62,86 +188,8 @@ export default function Home() {
       </nav>
 
       <main id="main">
-        {/* Hero：动态月夜 */}
-        <header className="hero" aria-label="首屏：月夜意境">
-          <motion.div
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.4, ease: [0.32, 0.72, 0, 1] }}
-            style={{ position: "absolute", inset: 0 }}
-          >
-            <Scene sceneKey="moonlit" />
-          </motion.div>
-          <div className="hero-content">
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15, delayChildren: 0.4 } } }}
-            >
-              <motion.h1
-                className="hero-title"
-                variants={{
-                  hidden: { opacity: 0, y: 32 },
-                  show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.32, 0.72, 0, 1] } },
-                }}
-              >
-                一诗<span className="accent">一</span>境
-              </motion.h1>
-              <motion.p
-                className="hero-sub"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.32, 0.72, 0, 1] } },
-                }}
-              >
-                走进唐诗的场景里去。每一页只有一首诗：全屏动态山水，月升雪落，花开水流，还有一段朗读，替古人开口。
-              </motion.p>
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 16 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] } },
-                }}
-              >
-                <a className="hero-cta" href="#shelf">翻开诗卷</a>
-              </motion.div>
-            </motion.div>
-          </div>
-        </header>
-
-        {/* 诗卷目录 */}
-        <section className="shelf" id="shelf" aria-label="诗卷目录">
-          <div className="wrap">
-            <motion.div className="section-head" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={riseIn}>
-              <h2>诗卷</h2>
-              <p>点开一首，进入它的夜与晨。</p>
-            </motion.div>
-            <div>
-              {POEMS.map((p, i) => (
-                <motion.div
-                  key={p.id}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  variants={{ ...riseIn, show: { ...riseIn.show, transition: { ...riseIn.show.transition, delay: i * 0.08 } } }}
-                >
-                  <Link className="poem-row" to={`/poem/${p.id}`}>
-                    <div className="poem-row-inner">
-                      <div className="poem-row-title">{p.title}</div>
-                      <div>
-                        <div className="poem-row-meta">
-                          <b>{p.dynasty} · {p.author}</b>
-                          {p.tags.join(" · ")}
-                        </div>
-                        <div className="poem-row-first">{p.lines[0]}{p.lines[1]}</div>
-                      </div>
-                      <span className="poem-row-go">入此境 →</span>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Hero />
+        <Shelf />
 
         {/* 画卷 · 馆藏真迹 */}
         <section className="gallery" id="gallery" aria-label="画卷：馆藏真迹">
