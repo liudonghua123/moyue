@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="lp-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#565a72"/>
+      <stop offset="0.55" stop-color="#7d7585"/>
+      <stop offset="1" stop-color="#a88f85"/>
+    </linearGradient>
+    <linearGradient id="lp-m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#635f76"/><stop offset="1" stop-color="#4c4960"/>
+    </linearGradient>
+    <filter id="lp-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：众鸟高飞尽，孤云独去闲 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#lp-sky)"/>
+
+    <!-- 大片留白的天空：唯余一缕孤云 -->
+    <g class="bg-lonecloud" filter="url(#lp-soft)">
+      <ellipse cx="1180" cy="220" rx="150" ry="20" fill="#c8bcc4" opacity="0.5"/>
+      <ellipse cx="1260" cy="240" rx="100" ry="15" fill="#bfb2bc" opacity="0.4"/>
+    </g>
+
+    <!-- 远去的鸟影：越飞越小 -->
+    <g stroke="#4a4658" stroke-width="2.6" fill="none" stroke-linecap="round">
+      <path class="bg-bird-far" d="M420,180 q7,-6 14,0 q7,-6 14,0"/>
+      <path class="bg-bird-far" d="M500,140 q5,-4 10,0 q5,-4 10,0"/>
+      <path class="bg-bird-far" d="M340,230 q4,-3 8,0 q4,-3 8,0"/>
+    </g>
+
+    <!-- 远山层叠：空阔无边 -->
+    <path d="M0,420 L240,350 L480,420 L720,360 L960,430 L1200,370 L1440,430 L1600,390 L1600,640 L0,640 Z" fill="url(#lp-m1)" filter="url(#lp-soft)" opacity="0.9"/>
+    <path d="M0,520 L300,450 L600,530 L900,460 L1200,540 L1600,470 L1600,700 L0,700 Z" fill="#403d52"/>
+
+    <!-- 苍茫暮霭 -->
+    <ellipse class="bg-haze" cx="800" cy="600" rx="640" ry="46" fill="#b08a7a" opacity="0.22" filter="url(#lp-soft)"/>
+  </g>
+
+  <!-- ======== 人物层：孤亭独坐，相看两不厌 ======== -->
+  <g class="fg">
+    <!-- 近景坡地 -->
+    <path d="M0,700 L500,650 L1000,710 L1600,660 L1600,900 L0,900 Z" fill="#38344a"/>
+    <path d="M0,760 L500,716 L1000,772 L1600,726 L1600,900 L0,900 Z" fill="#2e2a3e"/>
+
+    <!-- 孤亭：立于崖畔 -->
+    <g class="fg-pavilion">
+      <!-- 柱与顶 -->
+      <path class="fg-roof" d="M1080,470 Q1220,420 1360,470 L1330,436 Q1220,404 1110,436 Z" fill="#221e30"/>
+      <path d="M1104,470 Q1220,432 1336,470 L1336,478 Q1220,444 1104,478 Z" fill="#2c2739"/>
+      <rect x="1130" y="478" width="12" height="150" fill="#221e30"/>
+      <rect x="1298" y="478" width="12" height="150" fill="#221e30"/>
+      <rect x="1214" y="478" width="12" height="150" fill="#221e30"/>
+      <!-- 亭座 -->
+      <rect x="1090" y="626" width="260" height="16" fill="#1e1a2b"/>
+      <path d="M1120,642 L1140,720 L1164,720 L1148,642 Z" fill="#262138"/>
+      <path d="M1290,642 L1276,720 L1252,720 L1268,642 Z" fill="#262138"/>
+
+      <!-- 独坐的人 -->
+      <g class="fg-sitter">
+        <path class="fg-srobe" d="M1188,626 L1188,566 Q1190,544 1206,538 L1222,538 Q1240,544 1242,566 L1244,626 Z" fill="#211c30"/>
+        <circle class="fg-shead" cx="1215" cy="522" r="13" fill="#171324"/>
+        <circle cx="1215" cy="506" r="6" fill="#171324"/>
+        <!-- 凭栏的手 -->
+        <path class="fg-sarm" d="M1240,576 L1258,590 L1264,608" stroke="#211c30" stroke-width="8.6" stroke-linecap="round" fill="none"/>
+      </g>
+    </g>
+
+    <!-- 台边一棵遒劲老松 -->
+    <g class="fg-pine">
+      <path d="M940,700 Q948,600 930,540 Q916,494 940,450" fill="none" stroke="#1e1a2b" stroke-width="12" stroke-linecap="round"/>
+      <path d="M936,560 Q890,540 860,556 M934,510 Q980,490 1010,504" fill="none" stroke="#1e1a2b" stroke-width="7" stroke-linecap="round"/>
+      <g fill="#2e3a3a">
+        <ellipse class="fg-pineleaf" cx="852" cy="548" rx="40" ry="16"/>
+        <ellipse class="fg-pineleaf" cx="1016" cy="498" rx="44" ry="17"/>
+        <ellipse class="fg-pineleaf" cx="944" cy="446" rx="36" ry="14"/>
+      </g>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画：孤云独去 ---- */
+    .bg-lonecloud { animation: lp-cloud 90s linear infinite; }
+    @keyframes lp-cloud { from { transform: translateX(60px); } to { transform: translateX(-560px); } }
+
+    /* 鸟影远去，渐飞渐远 */
+    .bg-bird-far { animation: lp-bird 26s linear infinite; }
+    .bg-bird-far:nth-child(2) { animation-delay: -9s; animation-duration: 30s; }
+    .bg-bird-far:nth-child(3) { animation-delay: -17s; }
+    @keyframes lp-bird {
+      from { transform: translate(0,0); opacity: 0.9; }
+      to { transform: translate(-420px,-60px); opacity: 0; }
+    }
+
+    .bg-haze { animation: lp-haze 30s ease-in-out infinite; }
+    @keyframes lp-haze { 0%,100% { transform: translateX(-30px); } 50% { transform: translateX(30px); } }
+
+    /* ---- 人物动画：独坐之静 ---- */
+    .fg-pavilion { animation: lp-still 14s ease-in-out infinite; transform-origin: 1220px 640px; }
+    @keyframes lp-still { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(0.3deg); } }
+
+    .fg-sitter { animation: lp-breathe 7.5s ease-in-out infinite; transform-origin: 1215px 626px; }
+    @keyframes lp-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.98); } }
+    /* 长久凝望，偶尔转头 */
+    .fg-shead { animation: lp-gaze 17s ease-in-out infinite; transform-origin: 1215px 535px; }
+    @keyframes lp-gaze {
+      0%,100% { transform: rotate(0deg); }
+      40% { transform: rotate(-6deg); }
+      70% { transform: rotate(-6deg); }
+    }
+    .fg-sarm { animation: lp-arm 12s ease-in-out infinite; transform-origin: 1240px 576px; }
+    @keyframes lp-arm { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-4deg); } }
+
+    .fg-pine { animation: lp-pine 10s ease-in-out infinite; transform-origin: 940px 700px; }
+    @keyframes lp-pine { 0%,100% { transform: rotate(-0.8deg); } 50% { transform: rotate(0.9deg); } }
+    .fg-pineleaf { animation: lp-pineleaf 6s ease-in-out infinite; }
+    .fg-pineleaf:nth-child(2) { animation-delay: 1.4s; animation-duration: 7s; }
+    .fg-pineleaf:nth-child(3) { animation-delay: 2.8s; }
+    @keyframes lp-pineleaf { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+  </style>
+</svg>

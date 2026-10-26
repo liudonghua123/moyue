@@ -12,6 +12,8 @@ import lotusLakeRaw from "./lotus-lake.svg?raw";
 import midAutumnRaw from "./mid-autumn.svg?raw";
 import duskBoatRaw from "./dusk-boat.svg?raw";
 import winterPlumRaw from "./winter-plum.svg?raw";
+import grasslandEveningRaw from "./grassland-evening.svg?raw";
+import lonePavilionRaw from "./lone-pavilion.svg?raw";
 
 /**
  * 场景注册表：诗的 `scene` 字段 → 原始 SVG 字符串。
@@ -33,6 +35,8 @@ export const SCENES = {
   "mid-autumn": midAutumnRaw,
   "dusk-boat": duskBoatRaw,
   "winter-plum": winterPlumRaw,
+  "grassland-evening": grasslandEveningRaw,
+  "lone-pavilion": lonePavilionRaw,
 };
 
 /** 场景 key → 惟一 id 前缀（避免多实例 SVG defs id 冲突） */

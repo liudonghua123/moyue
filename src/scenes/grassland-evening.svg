@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="ge-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c98a6e"/>
+      <stop offset="0.55" stop-color="#e8b078"/>
+      <stop offset="1" stop-color="#f2cf94"/>
+    </linearGradient>
+    <linearGradient id="ge-field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7d8a5e"/>
+      <stop offset="1" stop-color="#5d6a48"/>
+    </linearGradient>
+    <filter id="ge-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+  </defs>
+
+  <!-- ======== 背景层：山衔落日浸寒漪 ======== -->
+  <g class="bg">
+    <rect width="1600" height="900" fill="url(#ge-sky)"/>
+
+    <!-- 落日：正被山衔着 -->
+    <circle class="bg-sun" cx="1120" cy="430" r="52" fill="#f8d9a0"/>
+    <circle cx="1120" cy="430" r="110" fill="#f8d9a0" opacity="0.32" filter="url(#ge-soft)"/>
+
+    <!-- 晚霞云带 -->
+    <g filter="url(#ge-soft)">
+      <ellipse class="bg-cloud bg-cloud-a" cx="400" cy="200" rx="260" ry="26" fill="#c97a70" opacity="0.5"/>
+      <ellipse class="bg-cloud bg-cloud-b" cx="900" cy="150" rx="240" ry="24" fill="#d98e76" opacity="0.45"/>
+    </g>
+
+    <!-- 远山：衔日之山 -->
+    <path class="bg-hills" d="M840,470 Q960,400 1080,450 Q1180,420 1300,465 L1600,440 L1600,640 L840,640 Z" fill="#6d5f52"/>
+    <path d="M0,440 Q260,370 520,440 Q780,390 1040,450 L1600,430 L1600,660 L0,660 Z" fill="#5d5248" opacity="0.85" filter="url(#ge-soft)"/>
+
+    <!-- 池塘：山衔落日的倒影 -->
+    <rect y="620" width="1600" height="280" fill="#57624f"/>
+    <ellipse class="bg-sunre" cx="1120" cy="680" rx="60" ry="12" fill="#f8d9a0" opacity="0.5"/>
+    <g stroke="#8a9070" stroke-width="2" fill="none" opacity="0.55">
+      <path class="bg-wave" d="M160,740 Q280,732 400,740 T640,740"/>
+      <path class="bg-wave" d="M700,800 Q840,792 980,800 T1220,800"/>
+    </g>
+
+    <!-- 草满池塘：岸边草浪 -->
+    <g stroke="#6a7a52" stroke-width="3" fill="none" opacity="0.8">
+      <path class="bg-grass" d="M80,660 q6,-18 0,-32 M110,664 q6,-20 0,-36 M146,660 q-6,-18 0,-32"/>
+      <path class="bg-grass" d="M420,676 q6,-18 0,-32 M452,680 q6,-20 0,-36 M486,676 q-6,-18 0,-32"/>
+      <path class="bg-grass" d="M760,664 q6,-18 0,-32 M792,668 q6,-20 0,-36"/>
+    </g>
+  </g>
+
+  <!-- ======== 人物层：牧童横牛背，短笛信口吹 ======== -->
+  <g class="fg">
+    <!-- 田埂近岸 -->
+    <path d="M0,720 Q400,680 800,720 Q1200,760 1600,720 L1600,900 L0,900 Z" fill="url(#ge-field)"/>
+
+    <!-- 老牛与横坐的牧童 -->
+    <g class="fg-oxboy">
+      <!-- 牛 -->
+      <g class="fg-ox">
+        <path d="M700,768 Q706,716 764,712 L856,712 Q910,716 916,768 L912,788 Q830,804 708,788 Z" fill="#4a3b30"/>
+        <path d="M700,772 Q810,790 914,772 L912,788 Q830,804 708,788 Z" fill="#382c24"/>
+        <!-- 牛头 -->
+        <path d="M910,730 Q948,720 952,744 Q950,762 916,758 Z" fill="#4a3b30"/>
+        <circle cx="936" cy="738" r="3.4" fill="#181210"/>
+        <path d="M938,722 Q950,706 964,710 M916,720 Q908,702 894,706" stroke="#2c221c" stroke-width="5.4" fill="none"/>
+        <!-- 牛尾 -->
+        <path class="fg-tail" d="M704,730 Q686,754 692,780" stroke="#382c24" stroke-width="5.4" fill="none"/>
+      </g>
+      <!-- 牧童：横坐牛背 -->
+      <g class="fg-boy">
+        <!-- 横坐的身体 -->
+        <path class="fg-brobe" d="M790,676 Q812,664 840,668 Q872,674 874,700 Q874,720 856,724 L788,724 Q780,700 790,676 Z" fill="#5a6a7e"/>
+        <!-- 头：微昂向天 -->
+        <circle class="fg-bhead" cx="856" cy="652" r="13" fill="#2c3542"/>
+        <!-- 双丫髻 -->
+        <circle cx="846" cy="638" r="6.4" fill="#2c3542"/>
+        <circle cx="866" cy="638" r="6.4" fill="#2c3542"/>
+        <!-- 悬空的双脚 -->
+        <path class="fg-leg" d="M788,720 L768,742" stroke="#5a6a7e" stroke-width="9" stroke-linecap="round"/>
+        <!-- 短笛：信口吹 -->
+        <path class="fg-flute" d="M868,668 L900,660" stroke="#7a5c40" stroke-width="5.4" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- 归鸟 -->
+    <g stroke="#5d4a44" stroke-width="3" fill="none" stroke-linecap="round">
+      <path class="bg-crow" d="M1180,240 q12,-10 24,0 q12,-10 24,0"/>
+      <path class="bg-crow" d="M1300,280 q10,-8 20,0 q10,-8 20,0"/>
+      <path class="bg-crow" d="M1080,300 q9,-7 18,0 q9,-7 18,0"/>
+    </g>
+  </g>
+
+  <style>
+    /* ---- 背景动画 ---- */
+    .bg-sun { animation: ge-sink 60s ease-in-out infinite; transform-origin: 1120px 430px; }
+    @keyframes ge-sink { 0%,100% { transform: translateY(0); } 55% { transform: translateY(26px); } }
+
+    .bg-cloud { animation: ge-drift ease-in-out infinite; }
+    .bg-cloud-a { animation-duration: 64s; }
+    .bg-cloud-b { animation-duration: 80s; animation-delay: -34s; }
+    @keyframes ge-drift { 0%,100% { transform: translateX(-36px); } 50% { transform: translateX(40px); } }
+
+    /* 山衔落日：山体微动，像咬住了不撒口 */
+    .bg-hills { animation: ge-bite 50s ease-in-out infinite; transform-origin: 1200px 460px; }
+    @keyframes ge-bite { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+    .bg-wave { stroke-dasharray: 220; stroke-dashoffset: 220; animation: ge-wave 8s linear infinite; }
+    .bg-wave:nth-child(2) { animation-duration: 10s; animation-delay: -4s; }
+    @keyframes ge-wave { to { stroke-dashoffset: -220; } }
+
+    .bg-sunre { animation: ge-sunre 6s ease-in-out infinite; transform-origin: 1120px 680px; }
+    @keyframes ge-sunre { 0%,100% { transform: scaleX(1); opacity: 0.5; } 50% { transform: scaleX(1.2); opacity: 0.35; } }
+
+    .bg-grass { animation: ge-grass 5s ease-in-out infinite; }
+    .bg-grass:nth-child(2n) { animation-delay: 1.2s; animation-duration: 6s; }
+    .bg-grass:nth-child(3n) { animation-delay: 2.4s; }
+    @keyframes ge-grass { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+    /* ---- 人物动画 ---- */
+    .fg-oxboy { animation: ge-plod 6s ease-in-out infinite; transform-origin: 810px 788px; }
+    @keyframes ge-plod { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(0.5deg); } }
+    .fg-ox { animation: ge-oxsway 9s ease-in-out infinite; transform-origin: 810px 780px; }
+    @keyframes ge-oxsway { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(0.6deg); } }
+    .fg-tail { animation: ge-tail 4.4s ease-in-out infinite; transform-origin: 704px 730px; }
+    @keyframes ge-tail { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(15deg); } }
+    .fg-bhead { animation: ge-bhead 8s ease-in-out infinite; transform-origin: 856px 665px; }
+    @keyframes ge-bhead { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(-9deg); } }
+    .fg-leg { animation: ge-leg 5.4s ease-in-out infinite; transform-origin: 788px 720px; }
+    @keyframes ge-leg { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg); } }
+    /* 笛声悠悠：笛身轻晃 */
+    .fg-flute { animation: ge-flute 3.6s ease-in-out infinite; transform-origin: 868px 668px; }
+    @keyframes ge-flute { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+
+    .bg-crow { animation: ge-crow 18s linear infinite; }
+    .bg-crow:nth-child(2) { animation-delay: -6s; animation-duration: 21s; }
+    .bg-crow:nth-child(3) { animation-delay: -12s; }
+    @keyframes ge-crow {
+      from { transform: translate(0,0); }
+      50% { transform: translate(-70px,-20px); }
+      to { transform: translate(-150px,6px); }
+    }
+  </style>
+</svg>
