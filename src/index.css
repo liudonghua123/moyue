@@ -468,22 +468,82 @@ p { text-wrap: pretty; }
   padding: 3px 12px; border-radius: 999px;
 }
 
-/* 诗页顶栏 */
+/* 诗页顶栏：移动端优先
+   结构：[←] [当前诗题 ▾]（整条是岛式胶囊）
+   点开后，诗签条在胶囊下方单行横滑展开 */
 .poem-topbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 20;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px var(--margin);
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+  z-index: 30;
+  display: flex; align-items: center; gap: 10px;
+  width: min(720px, calc(100vw - 24px));
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(12, 15, 19, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 230, 220, 0.1);
+  transition: border-color 0.3s var(--ease), border-radius 0.3s var(--ease);
 }
+.poem-topbar.open { border-radius: 20px; border-color: rgba(184, 150, 95, 0.4); }
 .poem-topbar .back {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 15px; color: var(--muted);
-  transition: color 0.3s var(--ease), transform 0.4s var(--ease);
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 999px;
+  font-size: 17px; color: var(--ink);
+  background: rgba(234, 230, 220, 0.06);
+  transition: background 0.3s var(--ease);
 }
-.poem-topbar .back:hover { color: var(--ink); transform: translateX(-3px); }
-.poem-switch { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: flex-end; max-width: 60vw; }
-.poem-switch a { font-size: 15px; color: var(--muted); transition: color 0.3s var(--ease); white-space: nowrap; }
-.poem-switch a:hover { color: var(--ink); }
-.poem-switch a.current { color: var(--accent); }
+.poem-topbar .back:hover { background: rgba(234, 230, 220, 0.14); }
+.switch-toggle {
+  flex: 1; min-width: 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--ink);
+}
+.switch-now {
+  font-family: var(--font-kai);
+  font-size: 17px; letter-spacing: 0.14em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.switch-caret {
+  flex: 0 0 auto; font-size: 12px; color: var(--muted);
+  transition: transform 0.3s var(--ease), color 0.3s;
+}
+.poem-topbar.open .switch-caret { transform: rotate(180deg); color: var(--accent); }
+
+/* 诗签条：默认收起，展开时单行横滑 */
+.poem-switch {
+  position: absolute;
+  top: calc(100% + 8px); left: 0; right: 0;
+  border-radius: 20px;
+  background: rgba(12, 15, 19, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(234, 230, 220, 0.1);
+  overflow: hidden;
+  opacity: 0; transform: translateY(-8px); pointer-events: none;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.poem-topbar.open .poem-switch { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.poem-switch-rail {
+  display: flex; gap: 4px;
+  overflow-x: auto;
+  padding: 10px 14px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.poem-switch-rail::-webkit-scrollbar { display: none; }
+.poem-switch a {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  font-size: 14px; color: var(--muted);
+  padding: 8px 14px; border-radius: 999px;
+  white-space: nowrap;
+  transition: color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.poem-switch a:hover { color: var(--ink); background: rgba(234, 230, 220, 0.06); }
+.poem-switch a.current { color: var(--accent-ink); background: var(--accent); }
 
 /* 朗读按钮 */
 .speak-btn {
@@ -528,8 +588,7 @@ p { text-wrap: pretty; }
   .site-nav { width: calc(100vw - 32px); top: 12px; padding: 10px 20px; }
   .scene-card { flex-basis: min(300px, 78vw); }
   .shelf-nav { display: none; }
-  .poem-switch { max-width: 46vw; gap: 4px 10px; }
-  .poem-switch a { font-size: 13px; }
+  .poem-switch a { font-size: 13px; padding: 7px 12px; }
   .hero-dots { flex-direction: row; right: auto; left: var(--margin); bottom: clamp(36px, 7vh, 80px); }
   .hero-dots span { width: 22px; height: 5px; }
   .hero-dots span.on { width: 34px; height: 5px; }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Scene from "../components/Scene.jsx";
@@ -30,20 +30,35 @@ export default function PoemPage() {
   const { playing, speakingIndex, toggle } = useSpeech(poem);
   const [tab, setTab] = useState("translation");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [switchOpen, setSwitchOpen] = useState(false);
+  const currentRef = useRef(null);
+
+  // 展开切换器时把当前诗滚到中间
+  useEffect(() => {
+    if (switchOpen && currentRef.current) {
+      currentRef.current.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    }
+  }, [switchOpen]);
+
+  // 切诗时收起抽屉与切换器并回到第一个标签
+  useEffect(() => {
+    setDrawerOpen(false);
+    setTab("translation");
+    setSwitchOpen(false);
+  }, [poem.id]);
 
   useEffect(() => {
     document.title = `${poem.title} · ${poem.author} · 墨月`;
   }, [poem]);
 
-  // 切诗时收起抽屉并回到第一个标签
+  // Esc 关闭抽屉与切换器
   useEffect(() => {
-    setDrawerOpen(false);
-    setTab("translation");
-  }, [poem.id]);
-
-  // Esc 关闭抽屉
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && setDrawerOpen(false);
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setDrawerOpen(false);
+        setSwitchOpen(false);
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -153,19 +168,33 @@ export default function PoemPage() {
         )}
       </AnimatePresence>
 
-      <nav className="poem-topbar" aria-label="诗页导航">
-        <Link className="back" to="/">← 回到诗卷</Link>
-        <div className="poem-switch">
-          {POEMS.map((p, i) => (
-            <Link
-              key={p.id}
-              to={`/poem/${p.id}`}
-              className={i === idx ? "current" : ""}
-              aria-current={i === idx ? "page" : undefined}
-            >
-              {p.title}
-            </Link>
-          ))}
+      <nav className={`poem-topbar ${switchOpen ? "open" : ""}`} aria-label="诗页导航">
+        <Link className="back" to="/" aria-label="回到诗卷">←</Link>
+        <button
+          className="switch-toggle"
+          onClick={() => setSwitchOpen((v) => !v)}
+          aria-expanded={switchOpen}
+          aria-controls="poem-switch"
+        >
+          <span className="switch-now">{poem.title}</span>
+          <span className="switch-caret" aria-hidden="true">▾</span>
+        </button>
+        {/* 诗签条：单行横滑，scroll-snap */}
+        <div className="poem-switch" id="poem-switch" aria-hidden={!switchOpen}>
+          <div className="poem-switch-rail">
+            {POEMS.map((p, i) => (
+              <Link
+                key={p.id}
+                to={`/poem/${p.id}`}
+                className={i === idx ? "current" : ""}
+                aria-current={i === idx ? "page" : undefined}
+                onClick={() => setSwitchOpen(false)}
+                ref={i === idx ? (el) => { currentRef.current = el; } : undefined}
+              >
+                {p.title}
+              </Link>
+            ))}
+          </div>
         </div>
       </nav>
 
