@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>墨月 · 唐诗宋词</title>
+    <script>
+      // GitHub Pages SPA 回退：把子路径转发给 index.html 处理
+      (function () {
+        var base = "/moyue/";
+        var path = location.pathname;
+        if (path.startsWith(base)) {
+          var route = path.slice(base.length).replace(/\/$/, "");
+          if (route && route !== "index.html") {
+            location.replace(base + "#/" + route);
+            return;
+          }
+        }
+        location.replace(base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
