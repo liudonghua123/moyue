@@ -1,0 +1,96 @@
+<svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="s-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#232a33"/>
+        <stop offset="0.6" stop-color="#3a444f"/>
+        <stop offset="1" stop-color="#55606b"/>
+      </linearGradient>
+      <linearGradient id="s-river" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6a7580"/>
+        <stop offset="1" stop-color="#49525c"/>
+      </linearGradient>
+      <linearGradient id="s-m1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c9d2d8"/><stop offset="1" stop-color="#9aa7b0"/>
+      </linearGradient>
+      <linearGradient id="s-m2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e4eaee"/><stop offset="1" stop-color="#b9c4cc"/>
+      </linearGradient>
+      <filter id="s-soft" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="10"/>
+      </filter>
+    </defs>
+
+    <rect width="1600" height="900" fill="url(#s-sky)"/>
+
+    <!-- 远山积雪 -->
+    <path d="M0,430 L180,300 L340,410 L520,280 L700,400 L900,320 L1080,420 L1260,310 L1440,410 L1600,340 L1600,560 L0,560 Z" fill="url(#s-m1)" filter="url(#s-soft)" opacity="0.9"/>
+    <path d="M0,500 L220,390 L420,490 L640,380 L860,480 L1100,400 L1320,490 L1600,420 L1600,620 L0,620 Z" fill="url(#s-m2)"/>
+
+    <!-- 江面 -->
+    <rect y="560" width="1600" height="340" fill="url(#s-river)"/>
+    <g class="s-ripples" stroke="#7d8893" stroke-width="2" opacity="0.4">
+      <path d="M120,640 Q220,634 320,640" fill="none"/>
+      <path d="M1150,700 Q1260,694 1370,700" fill="none"/>
+      <path d="M420,760 Q560,752 700,760" fill="none"/>
+      <path d="M900,820 Q1030,814 1160,820" fill="none"/>
+    </g>
+
+    <!-- 孤舟与蓑笠翁 -->
+    <g class="s-boat">
+      <path d="M620,700 Q800,660 980,700 L940,740 Q800,756 660,740 Z" fill="#20262e"/>
+      <path d="M640,700 Q800,668 960,700" fill="none" stroke="#39424c" stroke-width="4"/>
+      <!-- 船篷 -->
+      <path d="M760,668 Q820,630 880,668 Z" fill="#2a313b"/>
+      <!-- 人 -->
+      <g class="s-figure">
+        <circle cx="676" cy="608" r="12" fill="#12161c"/>
+        <path d="M656,604 Q676,586 696,604 Q676,596 656,604 Z" fill="#12161c"/>
+        <path d="M664,584 Q676,566 688,584 L692,600 L660,600 Z" fill="#3f4750"/>
+        <path d="M658,596 L694,596 L690,586 L662,586 Z" fill="#57616b"/>
+        <path d="M662,620 L690,620 L686,672 L666,672 Z" fill="#39424c"/>
+        <path class="s-rod" d="M668,624 L720,540" stroke="#161b22" stroke-width="4" stroke-linecap="round"/>
+        <line class="s-line" x1="720" y1="540" x2="720" y2="700" stroke="#aeb8c0" stroke-width="1.5" opacity="0.7"/>
+      </g>
+    </g>
+
+    <!-- 飞雪 -->
+    <g class="s-snow-far" fill="#dfe6ea" opacity="0.5">
+      <circle cx="100" cy="100" r="2"/><circle cx="300" cy="180" r="1.6"/><circle cx="520" cy="90" r="2"/>
+      <circle cx="740" cy="200" r="1.5"/><circle cx="960" cy="120" r="2"/><circle cx="1180" cy="230" r="1.6"/>
+      <circle cx="1400" cy="100" r="2"/><circle cx="1520" cy="260" r="1.5"/><circle cx="200" cy="320" r="1.8"/>
+      <circle cx="640" cy="330" r="1.5"/><circle cx="1060" cy="360" r="1.8"/><circle cx="1440" cy="380" r="1.5"/>
+    </g>
+    <g class="s-snow-near" fill="#eef3f6" opacity="0.85">
+      <circle cx="80" cy="240" r="3.2"/><circle cx="360" cy="420" r="2.8"/><circle cx="600" cy="160" r="3.4"/>
+      <circle cx="880" cy="380" r="3"/><circle cx="1120" cy="90" r="3.2"/><circle cx="1360" cy="320" r="2.8"/>
+      <circle cx="1560" cy="160" r="3.4"/><circle cx="240" cy="560" r="3"/><circle cx="480" cy="640" r="3.2"/>
+      <circle cx="1020" cy="560" r="2.8"/><circle cx="1300" cy="660" r="3"/><circle cx="1560" cy="540" r="3.2"/>
+      <circle cx="160" cy="760" r="3.4"/><circle cx="720" cy="820" r="3"/><circle cx="1180" cy="800" r="3.2"/>
+    </g>
+  </svg>
+  <style>
+    .s-ripples path { stroke-dasharray: 200; stroke-dashoffset: 200; animation: s-ripple 7s linear infinite; }
+    .s-ripples path:nth-child(2n) { animation-delay: 2s; }
+    .s-ripples path:nth-child(3n) { animation-delay: 4s; }
+    @keyframes s-ripple { to { stroke-dashoffset: -200; } }
+
+    .s-boat { animation: s-bob 6s ease-in-out infinite; transform-origin: 800px 720px; }
+    @keyframes s-bob { 0%,100% { transform: rotate(-0.8deg) translateY(0); } 50% { transform: rotate(0.8deg) translateY(-5px); } }
+
+    .s-figure { animation: s-figure-breathe 5s ease-in-out infinite; transform-origin: 676px 672px; }
+    @keyframes s-figure-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.985); } }
+
+    .s-rod { animation: s-rod-bend 8s ease-in-out infinite; transform-origin: 668px 624px; }
+    @keyframes s-rod-bend { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(1.6deg); } }
+
+    .s-snow-far circle { animation: s-fall 14s linear infinite; }
+    .s-snow-near circle { animation: s-fall 9s linear infinite; }
+    .s-snow-near circle:nth-child(2n) { animation-duration: 11s; }
+    .s-snow-near circle:nth-child(3n) { animation-duration: 13s; }
+    @keyframes s-fall {
+      from { transform: translate(0, -80px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      to { transform: translate(60px, 760px); opacity: 0; }
+    }
+  </style>

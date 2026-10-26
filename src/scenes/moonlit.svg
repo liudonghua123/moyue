@@ -1,0 +1,117 @@
+<svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="m-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0e1a"/>
+        <stop offset="0.55" stop-color="#131a2b"/>
+        <stop offset="1" stop-color="#1c2233"/>
+      </linearGradient>
+      <radialGradient id="m-moonglow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#f5eeda" stop-opacity="0.9"/>
+        <stop offset="0.35" stop-color="#e8ddb8" stop-opacity="0.35"/>
+        <stop offset="1" stop-color="#e8ddb8" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="m-beam" x1="0" y1="0" x2="0.6" y2="1">
+        <stop offset="0" stop-color="#f0e8cc" stop-opacity="0.35"/>
+        <stop offset="1" stop-color="#f0e8cc" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="m-m1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#232b40"/><stop offset="1" stop-color="#1a2133"/>
+      </linearGradient>
+      <linearGradient id="m-m2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#161c2c"/><stop offset="1" stop-color="#111623"/>
+      </linearGradient>
+      <filter id="m-soft" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="14"/>
+      </filter>
+    </defs>
+
+    <rect width="1600" height="900" fill="url(#m-sky)"/>
+
+    <!-- 星 -->
+    <g class="m-stars">
+      <circle cx="180" cy="120" r="1.6" fill="#e8e2cf"/>
+      <circle cx="420" cy="80" r="1.2" fill="#e8e2cf"/>
+      <circle cx="620" cy="150" r="1.8" fill="#e8e2cf"/>
+      <circle cx="900" cy="70" r="1.3" fill="#e8e2cf"/>
+      <circle cx="1120" cy="180" r="1.5" fill="#e8e2cf"/>
+      <circle cx="1330" cy="90" r="1.7" fill="#e8e2cf"/>
+      <circle cx="1480" cy="200" r="1.2" fill="#e8e2cf"/>
+      <circle cx="300" cy="230" r="1.1" fill="#e8e2cf"/>
+      <circle cx="760" cy="260" r="1.4" fill="#e8e2cf"/>
+      <circle cx="1230" cy="300" r="1.2" fill="#e8e2cf"/>
+    </g>
+
+    <!-- 月 -->
+    <g class="m-moon">
+      <circle cx="1180" cy="200" r="150" fill="url(#m-moonglow)"/>
+      <circle cx="1180" cy="200" r="62" fill="#f3ecd6"/>
+      <circle cx="1160" cy="185" r="10" fill="#e4d9b4" opacity="0.6"/>
+      <circle cx="1198" cy="215" r="7" fill="#e4d9b4" opacity="0.5"/>
+      <circle cx="1170" cy="222" r="5" fill="#e4d9b4" opacity="0.4"/>
+    </g>
+
+    <!-- 流云 -->
+    <g class="m-cloud m-cloud-a" filter="url(#m-soft)">
+      <ellipse cx="400" cy="180" rx="200" ry="26" fill="#262e45" opacity="0.55"/>
+      <ellipse cx="520" cy="200" rx="150" ry="20" fill="#222a40" opacity="0.5"/>
+    </g>
+    <g class="m-cloud m-cloud-b" filter="url(#m-soft)">
+      <ellipse cx="1000" cy="330" rx="240" ry="22" fill="#252d44" opacity="0.45"/>
+      <ellipse cx="1150" cy="350" rx="160" ry="18" fill="#20283c" opacity="0.4"/>
+    </g>
+
+    <!-- 远山两重 -->
+    <path d="M0,560 Q200,470 420,545 T860,540 T1300,555 T1600,520 L1600,900 L0,900 Z" fill="url(#m-m1)"/>
+    <path d="M0,650 Q260,575 520,635 T1040,640 T1600,610 L1600,900 L0,900 Z" fill="url(#m-m2)"/>
+
+    <!-- 屋舍一角（右侧） -->
+    <g class="m-roof">
+      <path d="M1290,470 Q1450,430 1620,470 L1620,500 Q1450,462 1290,500 Z" fill="#0d111c"/>
+      <path d="M1282,470 L1300,470 L1300,900 L1282,900 Z" fill="#0d111c"/>
+    </g>
+
+    <!-- 月光光束 -->
+    <path class="m-beamshape" d="M1180,240 L520,900 L980,900 L1180,240 Z" fill="url(#m-beam)" opacity="0.5"/>
+
+    <!-- 窗与人 -->
+    <g class="m-room">
+      <rect x="0" y="700" width="1600" height="200" fill="#0b0f18"/>
+      <rect x="980" y="560" width="460" height="340" fill="#0e1320"/>
+      <rect x="1005" y="585" width="410" height="290" fill="#141a2a"/>
+      <g stroke="#0a0e18" stroke-width="10">
+        <line x1="1210" y1="585" x2="1210" y2="875"/>
+        <line x1="1005" y1="730" x2="1415" y2="730"/>
+      </g>
+      <rect x="998" y="578" width="424" height="304" fill="none" stroke="#0a0e18" stroke-width="14"/>
+      <!-- 人影：望月 -->
+      <g class="m-figure">
+        <path d="M1100,875 L1100,760 Q1100,742 1116,736 L1122,718 Q1126,706 1140,706 Q1154,706 1158,718 L1163,736 Q1178,742 1178,760 L1178,875 Z" fill="#070a12"/>
+        <circle cx="1139" cy="700" r="17" fill="#070a12"/>
+        <path class="m-head" d="M1139,683 A17,17 0 0 1 1156,700 A17,17 0 0 0 1139,683 Z" fill="#070a12"/>
+        <path d="M1158,742 L1186,710" stroke="#070a12" stroke-width="9" stroke-linecap="round"/>
+      </g>
+    </g>
+  </svg>
+  <style>
+    .m-stars circle { animation: m-twinkle 4s ease-in-out infinite; transform-origin: center; }
+    .m-stars circle:nth-child(2n) { animation-delay: 1.2s; }
+    .m-stars circle:nth-child(3n) { animation-delay: 2.1s; }
+    .m-stars circle:nth-child(5n) { animation-delay: 3s; }
+    @keyframes m-twinkle { 0%,100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+    .m-moon { animation: m-breathe 7s ease-in-out infinite; transform-origin: 1180px 200px; }
+    @keyframes m-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+    .m-cloud-a { animation: m-drift-a 60s linear infinite; }
+    .m-cloud-b { animation: m-drift-b 80s linear infinite; }
+    @keyframes m-drift-a { from { transform: translateX(-260px); } to { transform: translateX(1300px); } }
+    @keyframes m-drift-b { from { transform: translateX(300px); } to { transform: translateX(-1500px); } }
+
+    .m-beamshape { animation: m-beam 9s ease-in-out infinite; }
+    @keyframes m-beam { 0%,100% { opacity: 0.35; } 50% { opacity: 0.6; } }
+
+    .m-figure { animation: m-figure-sway 11s ease-in-out infinite; transform-origin: 1140px 875px; }
+    @keyframes m-figure-sway { 0%,100% { transform: rotate(0.4deg); } 50% { transform: rotate(-0.6deg); } }
+    .m-head { animation: m-lookup 13s ease-in-out infinite; transform-origin: 1139px 700px; }
+    @keyframes m-lookup { 0%,100% { transform: rotate(0deg); } 45%,60% { transform: rotate(-8deg); } }
+  </style>

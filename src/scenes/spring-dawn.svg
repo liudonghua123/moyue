@@ -1,0 +1,119 @@
+<svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="c-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f4e9d8"/>
+        <stop offset="0.5" stop-color="#eddcc4"/>
+        <stop offset="1" stop-color="#e3cdb0"/>
+      </linearGradient>
+      <linearGradient id="c-m1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b5c2ae"/><stop offset="1" stop-color="#93a48e"/>
+      </linearGradient>
+      <linearGradient id="c-m2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8ba184"/><stop offset="1" stop-color="#6d8568"/>
+      </linearGradient>
+      <filter id="c-soft" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="12"/>
+      </filter>
+    </defs>
+
+    <rect width="1600" height="900" fill="url(#c-sky)"/>
+
+    <!-- 晨光 -->
+    <circle cx="1180" cy="230" r="180" fill="#faf3e2" opacity="0.7" filter="url(#c-soft)"/>
+    <circle cx="1180" cy="230" r="70" fill="#fcf7ea" opacity="0.9"/>
+
+    <!-- 远山 -->
+    <path d="M0,540 Q260,440 520,520 T1040,510 T1600,480 L1600,900 L0,900 Z" fill="url(#c-m1)" filter="url(#c-soft)" opacity="0.85"/>
+    <path d="M0,620 Q300,530 600,600 T1200,600 T1600,570 L1600,900 L0,900 Z" fill="url(#c-m2)"/>
+
+    <!-- 桃树 -->
+    <g class="c-tree">
+      <path d="M240,900 L252,760 Q250,720 280,690 M252,780 Q220,740 190,730 M254,800 Q290,750 320,745" stroke="#5a4a3c" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <g fill="#e8a8b8">
+        <circle cx="285" cy="680" r="34"/><circle cx="320" cy="710" r="28"/><circle cx="250" cy="715" r="26"/>
+        <circle cx="345" cy="670" r="24"/><circle cx="215" cy="690" r="22"/><circle cx="180" cy="725" r="18"/>
+        <circle cx="350" cy="730" r="18"/><circle cx="300" cy="645" r="20"/>
+      </g>
+      <g fill="#f0c2cd">
+        <circle cx="270" cy="660" r="14"/><circle cx="330" cy="695" r="12"/><circle cx="235" cy="700" r="11"/>
+        <circle cx="295" cy="700" r="13"/><circle cx="185" cy="710" r="9"/>
+      </g>
+    </g>
+
+    <!-- 莺燕 -->
+    <g class="c-birds" stroke="#4a5568" stroke-width="3.5" fill="none" stroke-linecap="round">
+      <path class="c-bird" d="M820,220 Q836,204 852,220 Q868,204 884,220"/>
+      <path class="c-bird" d="M950,290 Q963,278 976,290 Q989,278 1002,290"/>
+      <path class="c-bird" d="M740,340 Q750,330 760,340 Q770,330 780,340"/>
+    </g>
+    <g class="c-swallow">
+      <path d="M1060,360 Q1080,340 1100,360 Q1090,348 1080,352 Q1070,348 1060,360 Z" fill="#37414f"/>
+      <path class="c-swallow-wing" d="M1080,352 Q1090,322 1110,318 Q1100,344 1088,356 Z" fill="#2c3542"/>
+    </g>
+
+    <!-- 庭院与屋 -->
+    <g class="c-house">
+      <path d="M900,900 L910,640 L1400,640 L1400,900 Z" fill="#c8a279"/>
+      <path d="M870,640 L1150,540 L1430,640 Z" fill="#7a5c44"/>
+      <path d="M858,636 L1150,530 L1442,636 L1442,652 L1150,548 L858,652 Z" fill="#5d4636"/>
+      <rect x="1010" y="720" width="280" height="180" fill="#f2e8d5"/>
+      <g stroke="#7a5c44" stroke-width="8">
+        <line x1="1150" y1="720" x2="1150" y2="900"/>
+        <line x1="1010" y1="810" x2="1290" y2="810"/>
+      </g>
+      <rect x="1003" y="713" width="294" height="187" fill="none" stroke="#7a5c44" stroke-width="12"/>
+    </g>
+
+    <!-- 推窗人 -->
+    <g class="c-figure">
+      <path d="M1130,900 L1130,800 Q1130,782 1144,776 L1150,758 Q1154,746 1166,746 Q1178,746 1182,758 L1187,776 Q1200,782 1200,800 L1200,900 Z" fill="#6b5540"/>
+      <circle cx="1165" cy="740" r="15" fill="#6b5540"/>
+      <path d="M1180,782 L1210,752" stroke="#6b5540" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- 落花 -->
+    <g class="c-petals" fill="#e8a8b8">
+      <ellipse cx="420" cy="380" rx="7" ry="4"/>
+      <ellipse cx="560" cy="480" rx="6" ry="3.5"/>
+      <ellipse cx="700" cy="300" rx="7" ry="4"/>
+      <ellipse cx="840" cy="440" rx="6" ry="3.5"/>
+      <ellipse cx="500" cy="560" rx="7" ry="4"/>
+      <ellipse cx="640" cy="640" rx="6" ry="3.5"/>
+      <ellipse cx="920" cy="240" rx="7" ry="4"/>
+      <ellipse cx="380" cy="660" rx="6" ry="3.5"/>
+    </g>
+
+    <!-- 草地 -->
+    <path d="M0,840 Q400,810 800,840 T1600,830 L1600,900 L0,900 Z" fill="#5c7355"/>
+  </svg>
+  <style>
+    .c-bird { stroke-dasharray: 130; stroke-dashoffset: 130; animation: c-fly 8s linear infinite; }
+    .c-bird:nth-child(2) { animation-delay: 1.6s; }
+    .c-bird:nth-child(3) { animation-delay: 3.2s; }
+    @keyframes c-fly { 0% { stroke-dashoffset: 130; } 60%,100% { stroke-dashoffset: -130; } }
+
+    .c-swallow { animation: c-glide 12s ease-in-out infinite; }
+    @keyframes c-glide {
+      0%,100% { transform: translate(0,0); }
+      40% { transform: translate(-60px, 30px); }
+      70% { transform: translate(-20px, -10px); }
+    }
+    .c-swallow-wing { animation: c-flap 1.4s ease-in-out infinite; transform-origin: 1080px 354px; }
+    @keyframes c-flap { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-38deg); } }
+
+    .c-tree { animation: c-sway 9s ease-in-out infinite; transform-origin: 250px 900px; }
+    @keyframes c-sway { 0%,100% { transform: rotate(-0.8deg); } 50% { transform: rotate(0.8deg); } }
+
+    .c-figure { animation: c-figure-sway 12s ease-in-out infinite; transform-origin: 1165px 900px; }
+    @keyframes c-figure-sway { 0%,100% { transform: rotate(0.3deg); } 50% { transform: rotate(-0.4deg); } }
+
+    .c-petals ellipse { animation: c-fall 10s ease-in-out infinite; }
+    .c-petals ellipse:nth-child(2n) { animation-duration: 13s; animation-delay: 2s; }
+    .c-petals ellipse:nth-child(3n) { animation-duration: 8s; animation-delay: 4s; }
+    @keyframes c-fall {
+      0% { transform: translate(0, -40px) rotate(0deg); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translate(-80px, 480px) rotate(320deg); opacity: 0; }
+    }
+  </style>

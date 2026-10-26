@@ -1,0 +1,105 @@
+<svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="w-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2e2438"/>
+        <stop offset="0.45" stop-color="#7a4a3e"/>
+        <stop offset="0.75" stop-color="#c67f4a"/>
+        <stop offset="1" stop-color="#e0a463"/>
+      </linearGradient>
+      <linearGradient id="w-river" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#d99a5c"/>
+        <stop offset="0.4" stop-color="#a86a44"/>
+        <stop offset="1" stop-color="#5c4433"/>
+      </linearGradient>
+      <linearGradient id="w-m1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6b4a52"/><stop offset="1" stop-color="#4a3540"/>
+      </linearGradient>
+      <linearGradient id="w-m2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3f2f3c"/><stop offset="1" stop-color="#2c2130"/>
+      </linearGradient>
+      <filter id="w-soft" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="10"/>
+      </filter>
+    </defs>
+
+    <rect width="1600" height="900" fill="url(#w-sky)"/>
+
+    <!-- 落日 -->
+    <g class="w-sun">
+      <circle cx="1220" cy="360" r="130" fill="#f2c078" opacity="0.35" filter="url(#w-soft)"/>
+      <circle cx="1220" cy="360" r="58" fill="#f6cd8a"/>
+    </g>
+
+    <!-- 飞鸟 -->
+    <g class="w-birds" stroke="#3a2b30" stroke-width="3" fill="none" stroke-linecap="round">
+      <path class="w-bird" d="M760,190 Q776,174 792,190 Q808,174 824,190"/>
+      <path class="w-bird" d="M880,240 Q893,228 906,240 Q919,228 932,240"/>
+      <path class="w-bird" d="M680,260 Q690,250 700,260 Q710,250 720,260"/>
+    </g>
+
+    <!-- 远山两重 -->
+    <path d="M0,480 Q220,390 440,460 T880,450 T1320,465 T1600,420 L1600,900 L0,900 Z" fill="url(#w-m1)" filter="url(#w-soft)"/>
+    <path d="M0,560 Q280,470 560,545 T1120,540 T1600,510 L1600,900 L0,900 Z" fill="url(#w-m2)"/>
+
+    <!-- 黄河 -->
+    <g class="w-water">
+      <rect y="620" width="1600" height="280" fill="url(#w-river)"/>
+      <g stroke="#f2c078" stroke-width="3" opacity="0.5">
+        <path class="w-flow" d="M200,680 Q400,672 600,680" fill="none"/>
+        <path class="w-flow" d="M800,720 Q1000,712 1200,720" fill="none"/>
+        <path class="w-flow" d="M300,780 Q520,770 740,780" fill="none"/>
+        <path class="w-flow" d="M1000,830 Q1220,822 1440,830" fill="none"/>
+      </g>
+      <ellipse cx="1220" cy="640" rx="180" ry="14" fill="#f6cd8a" opacity="0.4"/>
+    </g>
+
+    <!-- 鹳雀楼高台 -->
+    <g class="w-tower">
+      <rect x="0" y="560" width="240" height="340" fill="#241a26"/>
+      <path d="M-20,560 Q100,510 260,560 L260,590 Q100,542 -20,590 Z" fill="#1a121c"/>
+      <rect x="40" y="620" width="160" height="90" fill="#33243a"/>
+      <g stroke="#1a121c" stroke-width="6">
+        <line x1="120" y1="620" x2="120" y2="710"/>
+        <line x1="40" y1="665" x2="200" y2="665"/>
+      </g>
+    </g>
+
+    <!-- 凭栏诗人（右侧前景，背对观众） -->
+    <g class="w-figure">
+      <rect x="1180" y="770" width="420" height="130" fill="#1c1420"/>
+      <g>
+        <path d="M1300,900 L1300,760 Q1300,738 1318,730 L1326,706 Q1331,692 1348,692 Q1365,692 1370,706 L1377,730 Q1394,738 1394,760 L1394,900 Z" fill="#221624"/>
+        <circle cx="1348" cy="684" r="19" fill="#221624"/>
+        <path d="M1330,690 Q1348,664 1372,686 L1372,700 Q1350,680 1330,700 Z" fill="#221624"/>
+        <!-- 广袖 -->
+        <path class="w-sleeve" d="M1372,742 Q1420,720 1436,680 Q1444,664 1432,660 Q1420,658 1414,672 Q1400,706 1366,724 Z" fill="#221624"/>
+        <path d="M1326,742 Q1300,730 1288,744 L1296,756 Q1312,748 1330,754 Z" fill="#221624"/>
+      </g>
+      <rect x="1376" y="776" width="224" height="10" fill="#160f1a"/>
+      <g stroke="#160f1a" stroke-width="8">
+        <line x1="1400" y1="776" x2="1400" y2="900"/>
+        <line x1="1520" y1="776" x2="1520" y2="900"/>
+        <line x1="1610" y1="776" x2="1610" y2="900"/>
+      </g>
+    </g>
+  </svg>
+  <style>
+    .w-sun { animation: w-sun-sink 26s ease-in-out infinite; transform-origin: 1220px 360px; }
+    @keyframes w-sun-sink { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(14px) scale(1.04); } }
+
+    .w-bird { stroke-dasharray: 130; stroke-dashoffset: 130; animation: w-fly 9s linear infinite; }
+    .w-bird:nth-child(2) { animation-delay: 2s; }
+    .w-bird:nth-child(3) { animation-delay: 4s; }
+    @keyframes w-fly { 0% { stroke-dashoffset: 130; } 60%,100% { stroke-dashoffset: -130; } }
+
+    .w-flow { stroke-dasharray: 220; stroke-dashoffset: 220; animation: w-river-flow 6s linear infinite; }
+    .w-flow:nth-child(2n) { animation-duration: 8s; }
+    .w-flow:nth-child(3n) { animation-duration: 5s; }
+    @keyframes w-river-flow { to { stroke-dashoffset: -220; } }
+
+    .w-figure { animation: w-figure-breathe 8s ease-in-out infinite; transform-origin: 1348px 900px; }
+    @keyframes w-figure-breathe { 0%,100% { transform: scale(1); } 50% { transform: scaleY(0.99) rotate(0.2deg); } }
+
+    .w-sleeve { animation: w-sleeve 10s ease-in-out infinite; transform-origin: 1372px 742px; }
+    @keyframes w-sleeve { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-7deg); } }
+  </style>
