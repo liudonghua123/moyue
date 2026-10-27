@@ -72,7 +72,7 @@ function Hero() {
             className="hero-sub"
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } } }}
           >
-            四十四首诗词，四十四个发生的时刻。每一页只有一首：全屏动态画境，人物与山水各自动，还有一段朗读，替古人开口。
+            三百五十四首诗词，三百五十四个发生的时刻。每一页只有一首：全屏动态画境，人物与山水各自动，还有一段朗读，替古人开口。
           </motion.p>
           <motion.div
             variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } } }}
@@ -141,7 +141,7 @@ function Shelf() {
       <div className="wrap shelf-head">
         <motion.div className="section-head" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={riseIn}>
           <h2>诗卷</h2>
-          <p>四十四首，四十四段时辰。横移长卷，点开一境。</p>
+          <p>唐诗三百首全录，三百五十四段时辰。横移长卷，点开一境。</p>
         </motion.div>
         <div className="shelf-nav">
           <button onClick={() => nudge(-1)} disabled={!canPrev} aria-label="向前卷动">←</button>
@@ -303,7 +303,7 @@ export default function Home() {
           <div className="wrap">
             <motion.div className="section-head" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={riseIn}>
               <h2>画卷</h2>
-              <p>大都会艺术博物馆开放藏品中的山水真迹，与四十四首诗同游。</p>
+              <p>大都会艺术博物馆开放藏品中的山水真迹，与三百余首诗同游。</p>
             </motion.div>
             <div className="gallery-grid">
               {GALLERY.map((g) => (
@@ -338,7 +338,7 @@ export default function Home() {
         <div className="footer-cols">
           <div>
             <h3>墨月</h3>
-            <p>一诗一境的唐诗宋词读本。<br />目前收录四十四首诗词，持续增补。</p>
+            <p>一诗一境的唐诗宋词读本。<br />唐诗三百首全量收录，持续增补。</p>
           </div>
           <div>
             <h3>诗卷</h3>
