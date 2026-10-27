@@ -9,6 +9,7 @@ export default function ThemeToggle() {
       className="theme-toggle"
       onClick={toggle}
       aria-label={dark ? "切换到日间模式" : "切换到夜间模式"}
+      aria-pressed={dark}
       title={dark ? "日间模式" : "夜间模式"}
     >
       {dark ? "日" : "月"}

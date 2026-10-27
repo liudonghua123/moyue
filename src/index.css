@@ -97,6 +97,35 @@ button {
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
+/* 主题切换过渡：
+   默认关闭（首屏加载不闪渐变）；用户点击切换时挂上 .theme-anim，
+   过渡结束后移除，避免滚动/悬停等无关属性被拖慢。 */
+html.theme-anim,
+html.theme-anim body,
+html.theme-anim button,
+html.theme-anim a,
+html.theme-anim input,
+html.theme-anim li,
+html.theme-anim p,
+html.theme-anim span,
+html.theme-anim h1, html.theme-anim h2, html.theme-anim h3,
+html.theme-anim figure, html.theme-anim figcaption, html.theme-anim cite,
+html.theme-anim blockquote, html.theme-anim aside, html.theme-anim nav,
+html.theme-anim section, html.theme-anim header, html.theme-anim footer,
+html.theme-anim main {
+  transition:
+    background-color 0.5s var(--ease),
+    color 0.5s var(--ease),
+    border-color 0.5s var(--ease),
+    fill 0.5s var(--ease),
+    stroke 0.5s var(--ease) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 h1, h2, h3 { font-weight: 400; text-wrap: balance; }
 p { text-wrap: pretty; }
 
@@ -777,6 +806,7 @@ body:has(.poem-topbar.open) .poem-card { opacity: 0.12; }
   transition: background 0.3s var(--ease), color 0.3s, transform 0.3s var(--ease);
 }
 .theme-toggle:hover { background: var(--accent); color: var(--accent-ink); transform: rotate(12deg); }
+.theme-toggle:active { transform: rotate(-8deg) scale(0.94); }
 
 /* ---------- 诗人下拉 ---------- */
 .poet-drop .nav-cat-panel { min-width: 260px; }
