@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Scene from "../components/Scene.jsx";
 import { POEMS } from "../data/poems.js";
 import { CATEGORIES } from "../data/categories.js";
+import ThemeToggle from "../components/ThemeToggle.jsx";
+import { AUTHORS, authorSlug } from "../data/authors.js";
 import imgLandscape from "../assets/landscape.jpg";
 import imgPavilion from "../assets/landscape-with-pavilion.jpg";
 import imgMountain from "../assets/mountain-landscape.jpg";
@@ -112,6 +114,32 @@ function Hero() {
   );
 }
 
+/** 诗卡内作者名：外层已是 Link，用 span + navigate 避免嵌套 a */
+function CardAuthor({ dynasty, author }) {
+  const navigate = useNavigate();
+  return (
+    <p
+      className="scene-card-author"
+      role="link"
+      tabIndex={0}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate(`/author/${authorSlug(author)}`);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          e.stopPropagation();
+          navigate(`/author/${authorSlug(author)}`);
+        }
+      }}
+    >
+      {dynasty} · {author}
+    </p>
+  );
+}
+
 /** 诗卷：横向滚动长廊 + 分类筛选 */
 function Shelf() {
   const railRef = useRef(null);
@@ -190,7 +218,7 @@ function Shelf() {
             </div>
             <div className="scene-card-body">
               <h3>{p.title}</h3>
-              <p className="scene-card-author">{p.dynasty} · {p.author}</p>
+              <CardAuthor dynasty={p.dynasty} author={p.author} />
               <p className="scene-card-line">{p.lines[0]}</p>
               <span className="scene-card-go">入此境 →</span>
             </div>
@@ -254,24 +282,67 @@ function CategoryDrop({ cat, open, onToggle }) {
   );
 }
 
+/** 诗人下拉：仿分类下拉，列出收录诗人（带诗作数） */
+function PoetDrop({ open, onToggle }) {
+  return (
+    <div className={`nav-cat poet-drop ${open ? "open" : ""}`}>
+      <button
+        className="nav-cat-btn"
+        onClick={onToggle}
+        aria-expanded={open}
+        aria-controls="poet-panel"
+      >
+        诗人
+        <span className="nav-caret" aria-hidden="true">▾</span>
+      </button>
+      <div className="nav-cat-panel poet-panel" id="poet-panel" role="menu">
+        <p className="nav-cat-desc">共 {AUTHORS.length} 位诗人，按收录诗作多寡为序。</p>
+        <div className="poet-grid">
+          {AUTHORS.map((a) => (
+            <Link
+              className="nav-cat-item poet-item"
+              to={`/author/${authorSlug(a.name)}`}
+              key={a.name}
+              role="menuitem"
+              onClick={onToggle}
+            >
+              <span className="nav-cat-time" aria-hidden="true">{a.count} 首</span>
+              {a.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [openCat, setOpenCat] = useState(null);
+  const [poetOpen, setPoetOpen] = useState(false);
   const navRef = useRef(null);
 
-  // 点击外部 / Esc 关闭下拉
+  // 点击外部 / Esc 关闭下拉（分类 + 诗人）
   useEffect(() => {
-    if (!openCat) return;
+    if (!openCat && !poetOpen) return;
     const onDown = (e) => {
-      if (navRef.current && !navRef.current.contains(e.target)) setOpenCat(null);
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setOpenCat(null);
+        setPoetOpen(false);
+      }
     };
-    const onKey = (e) => e.key === "Escape" && setOpenCat(null);
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setOpenCat(null);
+        setPoetOpen(false);
+      }
+    };
     document.addEventListener("pointerdown", onDown);
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("pointerdown", onDown);
       document.removeEventListener("keydown", onKey);
     };
-  }, [openCat]);
+  }, [openCat, poetOpen]);
 
   return (
     <>
@@ -286,12 +357,23 @@ export default function Home() {
               key={cat.key}
               cat={cat}
               open={openCat === cat.key}
-              onToggle={() => setOpenCat(openCat === cat.key ? null : cat.key)}
+              onToggle={() => {
+                setOpenCat(openCat === cat.key ? null : cat.key);
+                setPoetOpen(false);
+              }}
             />
           ))}
+          <PoetDrop
+            open={poetOpen}
+            onToggle={() => {
+              setPoetOpen(!poetOpen);
+              setOpenCat(null);
+            }}
+          />
           <a href="#shelf">诗卷</a>
           <a href="#philosophy">缘起</a>
         </div>
+        <ThemeToggle />
       </nav>
 
       <main id="main">
@@ -343,7 +425,11 @@ export default function Home() {
           <div>
             <h3>诗卷</h3>
             {POEMS.slice(0, 6).map((p) => (
-              <p key={p.id}><Link to={`/poem/${p.id}`}>{p.title} · {p.author}</Link></p>
+              <p key={p.id}>
+                <Link to={`/poem/${p.id}`}>{p.title}</Link>
+                {" · "}
+                <Link to={`/author/${authorSlug(p.author)}`}>{p.author}</Link>
+              </p>
             ))}
           </div>
           <div>

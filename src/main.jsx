@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home.jsx";
 import PoemPage from "./pages/PoemPage.jsx";
+import AuthorPage from "./pages/AuthorPage.jsx";
 import "./index.css";
 
 /** 路由切换时用 AnimatePresence 做页面过渡 */
@@ -14,6 +15,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/poem/:id" element={<PoemPage />} />
+        <Route path="/author/:slug" element={<AuthorPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>

@@ -6,6 +6,8 @@ import { POEMS, getPoem } from "../data/poems.js";
 import { CATEGORIES } from "../data/categories.js";
 import { PAINTING_URLS } from "../data/paintings.js";
 import { useSpeech } from "../hooks/useSpeech.js";
+import ThemeToggle from "../components/ThemeToggle.jsx";
+import { authorSlug } from "../data/authors.js";
 
 const EASE = [0.32, 0.72, 0, 1];
 
@@ -92,7 +94,7 @@ export default function PoemPage() {
           {poem.title}
         </motion.h1>
         <motion.p className="poem-byline" custom={1} variants={cardItem} initial="hidden" animate="show">
-          {poem.dynasty} · <b>{poem.author}</b>
+          {poem.dynasty} · <Link to={`/author/${authorSlug(poem.author)}`} className="poem-author-link"><b>{poem.author}</b></Link>
         </motion.p>
         <motion.ol className="poem-lines" custom={2} variants={cardItem} initial="hidden" animate="show">
           {poem.lines.map((line, i) => (
@@ -178,6 +180,7 @@ export default function PoemPage() {
           <span className="switch-now">{poem.title}</span>
           <span className="switch-caret" aria-hidden="true">▾</span>
         </button>
+        <ThemeToggle />
         {/* 诗签条：按分类分组的横滑列 */}
         <div className="poem-switch" id="poem-switch" aria-hidden={!switchOpen}>
           <div className="poem-switch-scroll">

@@ -5,6 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>墨月 · 唐诗宋词</title>
+    <script>
+      // 防闪烁：首屏绘制前恢复上次主题（默认 light）
+      try {
+        var t = localStorage.getItem("moyue-theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    </script>
     <meta name="description" content="一诗一境。唐诗三百首全量收录，三百五十四首诗词：全屏动态山水人物，专业朗读，走进每一首诗的意境。" />
     <meta property="og:title" content="墨月 · 唐诗宋词" />
     <meta property="og:description" content="一诗一境，唐诗三百首全量收录的全屏沉浸式体验。" />
